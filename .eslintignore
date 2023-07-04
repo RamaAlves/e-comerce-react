@@ -1,0 +1,6 @@
+# 📄 Archivo: .eslintignore
+-----------------------------------
+
+build
+coverage
+dist

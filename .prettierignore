@@ -1,0 +1,7 @@
+# 📄 Archivo: .prettierignore
+-----------------------------------
+
+build
+coverage
+dist
+package-lock.json
