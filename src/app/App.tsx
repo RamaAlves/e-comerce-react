@@ -27,8 +27,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/products" element={<Products />} />
-              <Route path="/products/:id" element={<ProductDetails />} />
-              <Route path="/products/category/:id" element={<ProductsCategory />} />
+              <Route path="/products/category/:categoryId" element={<Products/>} />
+              <Route path="/products/detail/:id" element={<ProductDetails />} />
               <Route path="/products/create" element={<CreateProduct />} />
               <Route path="/products/edit/:id" element={<EditProduct />} />
               <Route path="/cart-detail" element={<Cart />} />

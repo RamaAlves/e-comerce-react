@@ -26,7 +26,7 @@ export function Categories() {
       {data &&
         data.map((category: CategorySchema) => {
           return (
-            <Link to={`/products/category/${category.id}`}>
+            <Link key={category.id} to={`/products/category/${category.id}`}>
               <h1>{category.name}</h1>
               <p>{category.id}</p>
               <img src={category.image} alt={`imagen de ${category.name}`} />

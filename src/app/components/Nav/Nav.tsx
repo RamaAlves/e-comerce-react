@@ -20,7 +20,7 @@ export function Nav() {
           <li>Categorias</li>
         </Link>
         <Link to="/products">
-          <li>Locations</li>
+          <li>Products</li>
         </Link>
       </ul>
       <div className={style.userOption}>
