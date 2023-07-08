@@ -7,6 +7,7 @@ import { API_CATEGORIES, API_PRODUCTS } from "../../constants/urlsAPI";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { CategorySchema, ProductSchema } from "../../interfaces/interfaces";
+import { Card } from "../../components/UI/Card/Card";
 
 export function Products() {
   const [urlQuery, setUrlQuery] = useState(API_PRODUCTS);
@@ -73,11 +74,11 @@ export function Products() {
       {products &&
         products.map((product: ProductSchema) => {
           return (
-            <div key={product.id}>
+            <Card key={product.id}>
               <h1>{product.title}</h1>
               <p>{product.category.name}</p>
               <img src={product.images[0]} alt={`imagen de ${product.title}`} />
-            </div>
+            </Card>
           );
         })}
     </div>
