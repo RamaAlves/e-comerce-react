@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+.container a {
+  text-decoration: none;
+}/*# sourceMappingURL=ContainerButtons.module.css.map */

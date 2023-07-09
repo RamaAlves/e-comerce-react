@@ -1,0 +1,9 @@
+@import '../../../../variables.scss' ;
+@import '../../../../mixins.scss' ;
+.button {
+    @include formatButton;
+}
+
+.buy {
+    @include formatButtonBuy;
+}

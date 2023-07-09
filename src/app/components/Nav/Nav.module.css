@@ -1,46 +1,61 @@
-.darkModeNav {
-  display: flex;
-  background-color: rebeccapurple;
-  min-width: 100vw;
-  max-width: 1280px;
+.darkMode {
+  background-color: #141414;
 }
-.darkModeNav .logo {
-  flex-grow: 1;
-  background-color: aqua;
+.lightMode {
+  background-color: #dddada;
 }
 .nav {
+  position: relative;
+  z-index: 200;
   display: flex;
-  background-color: rgb(42, 46, 45);
   width: 100%;
+  height: 80px;
   justify-content: space-between;
+  transition: background-color 0.3s ease;
 }
 .nav .logo {
-  background-color: aqua;
+  justify-self: start;
+  width: 200px;
+  height: 80px;
+}
+.nav .logo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: drop-shadow(0 2px 2px rgba(250, 250, 250, 0.501));
 }
 .nav .containerMenu {
+  display: none;
+}
+.nav .containerMenuMobile {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0.5rem;
+  margin-right: 1.5rem;
 }
-.nav .containerMenu .buttonMenu {
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
+.nav .containerMenuMobile .buttonMenu {
+  border: none;
+  border-radius: 0.375rem;
   align-self: flex-end;
-  padding: 1rem 0;
-  width: 30px;
+  padding: 1rem 0.3rem;
+  width: 40px;
   height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(58, 15, 78);
 }
-.nav .containerMenu .buttonMenu span {
+.nav .containerMenuMobile .buttonMenu span {
   position: relative;
-  width: 40px;
+  width: 27px;
   height: 2px;
-  background-color: aliceblue;
+  background-color: white;
+  transition: background-color 0.2s ease;
 }
-.nav .containerMenu .buttonMenu span::after {
+.nav .containerMenuMobile .buttonMenu span::after {
   position: absolute;
   content: "";
   width: 27px;
@@ -48,8 +63,9 @@
   background-color: aliceblue;
   right: 0px;
   top: 10px;
+  transition: all 0.5s ease;
 }
-.nav .containerMenu .buttonMenu span::before {
+.nav .containerMenuMobile .buttonMenu span::before {
   position: absolute;
   content: "";
   width: 27px;
@@ -57,28 +73,51 @@
   background-color: aliceblue;
   right: 0px;
   bottom: 10px;
+  transition: all 0.5s ease;
 }
-.nav .containerMenu .expanded {
+.nav .containerMenuMobile .buttonMenuActive span {
+  background-color: transparent;
+}
+.nav .containerMenuMobile .buttonMenuActive span::after {
+  top: 0px;
+  transform: rotate(45deg);
+}
+.nav .containerMenuMobile .buttonMenuActive span::before {
+  top: 0;
+  transform: rotate(-45deg);
+}
+.nav .navbarMobile {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: calc(100vh - 80px);
   display: flex;
+  left: 0;
+  top: 0;
   flex-direction: column;
-  opacity: 1;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  background-color: rgba(73, 28, 108, 0.808);
+  transition: translate 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
-.nav .containerMenu .expanded .list {
+.nav .navbarMobile .list {
   display: flex;
   flex-direction: column;
   list-style: none;
   justify-content: center;
   align-items: center;
 }
-.nav .containerMenu .expanded .userOption {
+.nav .navbarMobile .userOption {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.nav .containerMenu .contracted {
-  display: none;
+.nav .expanded {
+  translate: 0 80px;
+  opacity: 1;
+}
+.nav .contracted {
+  translate: 0 -100%;
   opacity: 0;
 }/*# sourceMappingURL=Nav.module.css.map */

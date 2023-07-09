@@ -1,0 +1,26 @@
+@import './variables.scss';
+//mixins
+@mixin borderRadius{
+    border-radius: $border-radius;
+}
+
+@mixin formatCard{
+    background-color: $light-grey;
+    padding: $padding;
+    width: 320px;
+    @include borderRadius;
+}
+@mixin formatButton{
+    font-size: $text;
+    background-color: $white;
+    color:$purple;
+    padding: $padding;
+    min-width: 120px;
+    max-width: 320px;
+    @include borderRadius;
+}
+@mixin formatButtonBuy{
+    @include formatButton;
+    background-color: $purple;
+    color: $light-purple;
+}

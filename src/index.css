@@ -17,9 +17,7 @@ html body {
   padding: 0;
   height: 100%;
   width: 100%;
-  color: #213;
   color-scheme: light dark;
-  background-color: #135;
   margin: 0;
 }
 html body #root {

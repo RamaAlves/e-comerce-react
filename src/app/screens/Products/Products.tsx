@@ -4,12 +4,18 @@ import {
   QUERY_KEY_PRODUCTS,
 } from "../../constants/queryConstants";
 import { API_CATEGORIES, API_PRODUCTS } from "../../constants/urlsAPI";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useContext, useState, Suspense } from "react";
 import { CategorySchema, ProductSchema } from "../../interfaces/interfaces";
 import { Card } from "../../components/UI/Card/Card";
+import { Button } from "../../components/UI/Button/Button";
+import styles from "./Products.module.scss";
+import { ContainerButtons } from "../../components/UI/ContainerButtons/ContainerButtons";
+import { ThemeContext } from "../../context/ThemeContext";
+import { Loader } from "../../components/UI/Loader/Loader";
 
 export function Products() {
+  const [darkMode] = useContext(ThemeContext);
   const [urlQuery, setUrlQuery] = useState(API_PRODUCTS);
   const { categoryId } = useParams();
 
@@ -44,10 +50,15 @@ export function Products() {
     return json;
   });
   function updateQuery(e) {
-    e.preventDefault()
+    e.preventDefault();
   }
   return (
-    <div>
+    <main
+      className={[
+        styles.main,
+        darkMode ? styles.darkMode : styles.lightMode,
+      ].join(" ")}
+    >
       <form>
         {categories && (
           <>
@@ -70,17 +81,33 @@ export function Products() {
         )}
       </form>
 
-      {productsStatus === "loading" && <h1>Cargando...</h1>}
+      {productsStatus === "loading" && <Loader/>}
       {products &&
         products.map((product: ProductSchema) => {
           return (
             <Card key={product.id}>
-              <h1>{product.title}</h1>
+              <h3>{product.title}</h3>
               <p>{product.category.name}</p>
-              <img src={product.images[0]} alt={`imagen de ${product.title}`} />
+              <Suspense fallback={<Loader />}>
+                <img
+                  src={product.images[0]}
+                  alt={`imagen de ${product.title}`}
+                  onError={(e) =>
+                    (e.currentTarget.src = "/images/imagesProductsDefault/FallbackProduct.jpg")
+                  }
+                />
+              </Suspense>
+              <ContainerButtons>
+                <Link to={`/products/detail/${product.id}`}>
+                  <Button buy={false}>Details</Button>
+                </Link>
+                <Link to={`/products/detail/${product.id}`}>
+                  <Button buy={true}>Buy</Button>
+                </Link>
+              </ContainerButtons>
             </Card>
           );
         })}
-    </div>
+    </main>
   );
 }

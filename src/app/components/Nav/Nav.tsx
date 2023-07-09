@@ -14,7 +14,14 @@ export function Nav() {
       )}
     >
       <Link className={style.logo} to="/">
-        <img src="/Logos/TiendaOnline-logos_white.png" alt="" />
+        <img
+          src={
+            darkMode
+              ? "/images/Logos/TiendaOnline-logos_white.png"
+              : "/images/Logos/TiendaOnline-logos_black.png"
+          }
+          alt="logo"
+        />
       </Link>
 
       <div className={style.containerMenu}>
