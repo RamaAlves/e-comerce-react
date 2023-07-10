@@ -96,6 +96,28 @@ export function Nav() {
           [style.navbarMobile],
         ].join(" ")}
       >
+        <div className={style.userOption}>
+          <Link
+            to="/login"
+            onClick={() => {
+              setExpandedMenu(!expandedMenu);
+            }}
+          >
+            Iniciar sesion
+          </Link>
+          {/* <Link to="/logout">
+            Cerrar Sesion
+        </Link> */}
+          <Link
+            to="/cart-detail"
+            onClick={() => {
+              setExpandedMenu(!expandedMenu);
+            }}
+          >
+            Cart
+          </Link>
+          <ThemeButton />
+        </div>
         <ul className={style.list}>
           <Link
             to="/"
@@ -122,28 +144,6 @@ export function Nav() {
             <li>Products</li>
           </Link>
         </ul>
-        <div className={style.userOption}>
-          <Link
-            to="/login"
-            onClick={() => {
-              setExpandedMenu(!expandedMenu);
-            }}
-          >
-            Iniciar sesion
-          </Link>
-          {/* <Link to="/logout">
-            Cerrar Sesion
-        </Link> */}
-          <Link
-            to="/cart-detail"
-            onClick={() => {
-              setExpandedMenu(!expandedMenu);
-            }}
-          >
-            Cart
-          </Link>
-          <ThemeButton />
-        </div>
       </div>
     </nav>
   );
