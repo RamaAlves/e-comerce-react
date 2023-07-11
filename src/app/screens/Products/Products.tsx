@@ -4,7 +4,7 @@ import {
   QUERY_KEY_PRODUCTS,
 } from "../../constants/queryConstants";
 import { API_CATEGORIES, API_PRODUCTS } from "../../constants/urlsAPI";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useContext, useState, Suspense } from "react";
 import { CategorySchema, ProductSchema } from "../../interfaces/interfaces";
 import { Card } from "../../components/UI/Card/Card";
@@ -16,21 +16,26 @@ import { Loader } from "../../components/UI/Loader/Loader";
 
 export function Products() {
   const [darkMode] = useContext(ThemeContext);
-  const [urlQuery, setUrlQuery] = useState(API_PRODUCTS);
-  const { categoryId } = useParams();
+  const { state } = useLocation();
+  const [urlQuery, setUrlQuery] = useState(
+    state?.categoryId
+      ? API_PRODUCTS + `/?categoryId=${state?.categoryId}`
+      : API_PRODUCTS
+  );
 
   async function fetchProducts() {
-    if (categoryId) {
+    /* if (categoryId) {
       const res = await fetch(API_PRODUCTS + `/?categoryId=${categoryId}`);
       const json = await res.json();
       console.log(json);
       return json;
-    } else {
-      const res = await fetch(urlQuery);
-      const json = await res.json();
-      console.log(json);
-      return json;
-    }
+    } else { */
+    console.log(urlQuery);
+    const res = await fetch(urlQuery);
+    const json = await res.json();
+    console.log(json);
+    return json;
+    /* } */
   }
 
   const {
@@ -59,55 +64,65 @@ export function Products() {
         darkMode ? styles.darkMode : styles.lightMode,
       ].join(" ")}
     >
-      <form>
-        {categories && (
+      <section className={styles.containerFilter}>
+        <form className={styles.formFilter}>
+          {categories && (
+            <>
+              <label htmlFor="categoryInput">Categoria: </label>
+              <select name="category" id="categoryInput">
+                {categories.map((category: CategorySchema) => {
+                  return (
+                    <option key={category.id} value={category.name}>
+                      {category.name}
+                    </option>
+                  );
+                })}
+              </select>
+              <label htmlFor="min">Min price: </label>
+              <input type="number" id="min" />
+              <label htmlFor="max">Max price: </label>
+              <input type="number" id="max" />
+              <button onClick={updateQuery}>Apply</button>
+            </>
+          )}
+        </form>
+      </section>
+      <section className={styles.containerProducts}>
+        {productsError ? (
+          <h1>Error</h1>
+        ) : (
           <>
-            <label htmlFor="categoryInput">Categoria: </label>
-            <select name="category" id="categoryInput">
-              {categories.map((category: CategorySchema) => {
+            {productsStatus === "loading" && <Loader />}
+            {products &&
+              products.map((product: ProductSchema) => {
                 return (
-                  <option key={category.id} value={category.name}>
-                    {category.name}
-                  </option>
+                  <Card key={product.id}>
+                    <h3>{product.title}</h3>
+                    <p>{product.category.name}</p>
+                    <Suspense fallback={<Loader />}>
+                      <img
+                        src={product.images[0]}
+                        alt={`imagen de ${product.title}`}
+                        onError={(e) =>
+                          (e.currentTarget.src =
+                            "/images/imagesProductsDefault/FallbackProduct.jpg")
+                        }
+                      />
+                    </Suspense>
+                    <ContainerButtons>
+                      <Link to={`/products/${product.id}`}>
+                        <Button buy={false}>Details</Button>
+                      </Link>
+                      <Link to={`/products/${product.id}`}>
+                        <Button buy={true}>Buy</Button>
+                      </Link>
+                    </ContainerButtons>
+                  </Card>
                 );
               })}
-            </select>
-            <label htmlFor="min">Min price: </label>
-            <input type="number" id="min" />
-            <label htmlFor="max">Max price: </label>
-            <input type="number" id="max" />
-            <button onClick={updateQuery}>Apply</button>
           </>
         )}
-      </form>
-
-      {productsStatus === "loading" && <Loader/>}
-      {products &&
-        products.map((product: ProductSchema) => {
-          return (
-            <Card key={product.id}>
-              <h3>{product.title}</h3>
-              <p>{product.category.name}</p>
-              <Suspense fallback={<Loader />}>
-                <img
-                  src={product.images[0]}
-                  alt={`imagen de ${product.title}`}
-                  onError={(e) =>
-                    (e.currentTarget.src = "/images/imagesProductsDefault/FallbackProduct.jpg")
-                  }
-                />
-              </Suspense>
-              <ContainerButtons>
-                <Link to={`/products/detail/${product.id}`}>
-                  <Button buy={false}>Details</Button>
-                </Link>
-                <Link to={`/products/detail/${product.id}`}>
-                  <Button buy={true}>Buy</Button>
-                </Link>
-              </ContainerButtons>
-            </Card>
-          );
-        })}
+      </section>
     </main>
   );
 }

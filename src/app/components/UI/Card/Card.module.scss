@@ -1,8 +1,17 @@
 @import "../../../../variables.scss";
 @import "../../../../mixins.scss";
 
+.darkMode{
+    background-color: $light-grey;
+    color:$black;
+}
+.lightMode{
+    background-color: $white;
+    color:$black;
+}
 .card{
     @include formatCard;
+    
     img{
         width: 100%;
         border-radius: $border-radius;

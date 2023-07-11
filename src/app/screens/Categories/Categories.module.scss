@@ -1,27 +1,29 @@
 @import "../../../variables.scss";
 @import "../../../mixins.scss";
-.darkMode{
+
+.darkMode {
     background-color: $dark-grey;
-    .containerFilter {
-        background-color: $light-grey;
+    .title {
+        color:$white;
     }
 
-    .containerProducts {
-       background-color: $grey;
+    .containerCategories {
+        background-color: $grey;
     }
 }
-.lightMode{
+
+.lightMode {
     background-color: $white;
-    .containerFilter {    
-        background-color: $light-grey;
+    .title {
+        color: $black;
     }
     
-    .containerProducts {
+    .containerCategories {
         background-color: $light-grey;
     }
-    
 }
-.main{
+
+.main {
     transition: background-color .3s ease;
     display: flex;
     flex-direction: column;
@@ -29,12 +31,14 @@
     justify-content: space-around;
     height: calc(100% - 80px);
     padding: $padding;
-    .containerFilter{
-        height: 10%;
+
+    .title{
+        font-size: $title;
     }
-    .containerProducts{
-        height: 80%;
-        width:100%;
+    .containerCategories {
+        border-radius: $border-radius;
+        max-height: 100%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;

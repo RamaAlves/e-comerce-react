@@ -17,7 +17,6 @@
     .containerMenuMobile {
 
         .buttonMenu {
-            border: 1px $purple solid;
             background-color: $black;
             &:active{
                 background-color: $purple;
@@ -85,7 +84,6 @@
     .containerMenuMobile {
 
         .buttonMenu {
-            border: 1px $purple solid;
             background-color: $light-grey;
 
             &:active {
@@ -195,6 +193,7 @@
         padding: .5rem;
         margin-right: 1.5rem;
         .buttonMenu{
+            border: none;
             border-radius: .375rem;
             align-self: flex-end;
             padding: 1rem .3rem;
@@ -212,16 +211,16 @@
                     position: absolute;
                     content:'';
                     width: 27px;
-                    height: 1.5px;
+                    height: 2px;
                     right: 0px;
                     top:10px;
                     transition: all .5s ease;
                 }
                 &::before {
                     position: absolute;
-                    content: '';
+                    content:'';
                     width: 27px;
-                    height: 1.5px;
+                    height: 2px;
                     right: 0px;
                     bottom: 10px;
                     transition:all .5s ease;

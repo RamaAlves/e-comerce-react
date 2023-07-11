@@ -5,7 +5,6 @@
 }
 
 @mixin formatCard{
-    background-color: $light-grey;
     padding: $padding;
     width: 320px;
     @include borderRadius;

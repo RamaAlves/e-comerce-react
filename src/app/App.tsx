@@ -13,7 +13,6 @@ import { Login } from "./screens/Auth/Login/Login";
 import { Register } from "./screens/Auth/Register/Register";
 import { ThemeProvider } from "./context/ThemeContext";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ProductsCategory } from "./screens/Products/ProductsCategory/ProductsCategory";
 
 const queryClient = new QueryClient();
 
@@ -27,8 +26,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/products" element={<Products />} />
-              <Route path="/products/category/:categoryId" element={<Products/>} />
-              <Route path="/products/detail/:id" element={<ProductDetails />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
               <Route path="/products/create" element={<CreateProduct />} />
               <Route path="/products/edit/:id" element={<EditProduct />} />
               <Route path="/cart-detail" element={<Cart />} />
