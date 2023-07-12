@@ -1,0 +1,46 @@
+@import "../../../variables.scss";
+@import "../../../mixins.scss";
+.darkMode{
+    background-color: $dark-grey;
+    .containerFilter {
+        background-color: $light-grey;
+    }
+
+    .containerProducts {
+       background-color: $grey;
+    }
+}
+.lightMode{
+    background-color: $white;
+    .containerFilter {    
+        background-color: $light-grey;
+    }
+    
+    .containerProducts {
+        background-color: $light-grey;
+    }
+    
+}
+.main{
+    transition: background-color .3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: calc(100% - 80px);
+    padding: $padding;
+    .containerFilter{
+        height: 10%;
+    }
+    .containerProducts{
+        height: 80%;
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: $padding;
+        gap: $gap;
+        overflow: auto;
+    }
+}

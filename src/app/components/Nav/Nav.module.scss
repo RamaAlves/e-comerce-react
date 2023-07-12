@@ -1,0 +1,292 @@
+@import "../../../variables.scss";
+.darkMode{
+    background-color: $black;
+    border-bottom: 2px solid $purple;
+
+    .logo {
+        
+        img {
+            
+        }
+    }
+
+    .containerMenu {
+
+    }
+
+    .containerMenuMobile {
+
+        .buttonMenu {
+            background-color: $black;
+            &:active{
+                background-color: $purple;
+            }
+
+            span {
+                background-color: $white;
+                
+                &::after {
+                    background-color: $white;
+                }
+
+                &::before {
+                    background-color: $white;
+                }
+            }
+        }
+
+        .buttonMenuActive {
+            background-color: $dark-purple;
+            span {
+                &::after {
+                    background-color: $light-purple;
+                }
+                
+                &::before {
+                    background-color: $light-purple;
+                }
+            }
+        }
+    }
+
+    .navbarMobile {
+        background-color: $light-grey;
+
+        .list {
+            color: $black;
+
+            li {
+                color: $black;
+            }
+        }
+
+        .userOption {
+            color: $black;
+
+            a {
+                color: $black;
+            }
+        }
+    }
+
+}
+.lightMode{
+    background-color: $light-grey;
+    border-bottom: 2px solid $purple;
+
+    .logo {
+
+        img {}
+    }
+
+    .containerMenu {}
+
+    .containerMenuMobile {
+
+        .buttonMenu {
+            background-color: $light-grey;
+
+            &:active {
+                background-color: $dark-purple;
+                span {
+                    background-color: $white;
+    
+                    &::after {
+                        background-color: $white;
+                    }
+    
+                    &::before {
+                        background-color: $white;
+                    }
+                }
+            }
+
+            span {
+                background-color: $black;
+
+                &::after {
+                    background-color: $black;
+                }
+
+                &::before {
+                    background-color: $black;
+                }
+            }
+        }
+
+        .buttonMenuActive {
+            background-color: $light-purple;
+            span {
+                &::after {
+                    background-color: $purple;
+                }
+
+                &::before {
+                    background-color: $purple;
+                }
+            }
+            &:active {
+                background-color: $dark-purple;
+
+                span {
+                    height: 0;
+
+                    &::after {
+                        background-color: $white;
+                    }
+
+                    &::before {
+                        background-color: $white;
+                    }
+                }
+            }
+        }
+    }
+
+    .navbarMobile {
+        background-color: $light-grey;
+
+        .list {
+            color: $black;
+
+            li {
+                color: $black;
+            }
+        }
+
+        .userOption {
+            color: $black;
+            a{
+                color: $black;
+            }
+        }
+    }
+}
+.nav{
+    position:relative;
+    z-index: 200;
+    display:flex;
+    width: 100%;
+    height: 80px;
+    justify-content: space-between;
+    transition:background-color .3s ease;
+    .logo{
+        justify-self: start;
+        width: 200px;
+        height: 80px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter:drop-shadow(0 2px 2px rgba(250, 250, 250, 0.501))
+        }
+    }
+    .containerMenu{
+        display:none;
+        
+    }
+    .containerMenuMobile{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: .5rem;
+        margin-right: 1.5rem;
+        .buttonMenu{
+            border: none;
+            border-radius: .375rem;
+            align-self: flex-end;
+            padding: 1rem .3rem;
+            width: 40px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            span{
+                position: relative;                
+                width: 27px;
+                height: 2px;
+                transition: background-color .2s ease;
+                &::after{
+                    position: absolute;
+                    content:'';
+                    width: 27px;
+                    height: 2px;
+                    right: 0px;
+                    top:10px;
+                    transition: all .5s ease;
+                }
+                &::before {
+                    position: absolute;
+                    content:'';
+                    width: 27px;
+                    height: 2px;
+                    right: 0px;
+                    bottom: 10px;
+                    transition:all .5s ease;
+                }
+            }
+        }
+        .buttonMenuActive{
+            span{
+                background-color: transparent;
+                &::after{
+                    top:0px;
+                    transform: rotate(45deg);
+                }
+                &::before{
+                    bottom:0px;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+    .navbarMobile{
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: calc(100vh - 80px);
+        display: flex;
+        left:0;
+        top:0;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        transition: translate .5s ease-in-out, opacity .5s ease-in-out;
+        .list {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+            font-size: $title;
+            a{
+                text-decoration: none;
+            }
+        }
+        
+        .userOption {
+            height: 20%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            a{
+                font-size: $text;
+                text-decoration: none;
+            }
+        }
+    }
+    .expanded {
+        translate: 0 80px;
+        opacity: .9;
+    }
+    
+    .contracted {
+        translate: 0 -100%;
+        opacity: 0;
+    }
+
+}
