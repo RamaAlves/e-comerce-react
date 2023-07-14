@@ -27,5 +27,5 @@ export interface  ChildrenType {
 
 export interface ButtonType {
   children: React.ReactNode,
-  buy: boolean
+  purple: boolean
 }

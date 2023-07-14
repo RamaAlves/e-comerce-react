@@ -8,6 +8,7 @@ import styles from "./Categories.module.scss";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { Loader } from "../../components/UI/Loader/Loader";
+import { ErrorComponent } from "../../components/Error/ErrorComponent";
 
 export function Categories() {
   const [darkMode] = useContext(ThemeContext);
@@ -33,7 +34,7 @@ export function Categories() {
       ].join(" ")}
     >
       {error ? (
-        <h1>Error</h1>
+        <ErrorComponent/>
       ) : (
         <>
           <h1 className={styles.title}>Categories</h1>
