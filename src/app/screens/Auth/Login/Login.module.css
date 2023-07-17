@@ -1,3 +1,29 @@
+.darkMode {
+  background-color: #292929;
+}
+.darkMode .form {
+  background-color: #cfcece;
+}
+.darkMode .form label input {
+  background-color: #292929;
+}
+.darkMode .form a {
+  color: #4b0d89;
+}
+
+.lightMode {
+  background-color: #ece7e7;
+}
+.lightMode .form {
+  background-color: #cfcece;
+}
+.lightMode .form label input {
+  background-color: #4c4a4a;
+}
+.lightMode .form a {
+  color: #4b0d89;
+}
+
 .main {
   display: flex;
   width: 100%;
@@ -14,7 +40,6 @@
   padding: 12px;
   width: 320px;
   border-radius: 0.375rem;
-  background-color: #cfcece;
   gap: 0.5rem;
 }
 .main .form label {
@@ -27,6 +52,7 @@
 .main .form label input {
   width: 100%;
   padding: 12px;
+  border: none;
 }
 .main .form label small {
   width: 100%;
@@ -48,7 +74,4 @@
 .main .form .btnLogin:disabled {
   background-color: #4c4a4a;
   color: #292929;
-}
-.main .form a {
-  color: #141414;
 }/*# sourceMappingURL=Login.module.css.map */

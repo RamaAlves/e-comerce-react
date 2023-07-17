@@ -1,9 +1,41 @@
 @import "../../../../variables.scss";
 @import "../../../../mixins.scss";
 
-.darkMode {}
+.darkMode {
+    background-color: $dark-grey;
+    
+    .form {
+        background-color: $light-grey;
 
-.lightMode {}
+        label {
+            input {
+                background-color: $dark-grey;
+            }
+        }
+
+        a {
+            color: $purple;
+        }
+    }
+}
+
+.lightMode {
+    background-color: $white;
+    
+    .form {
+        background-color: $light-grey;
+
+        label {
+            input {
+                background-color: $grey;
+            }
+        }
+
+        a {
+            color: $purple;
+        }
+    }
+}
 
 .main {
     display: flex;
@@ -19,7 +51,6 @@
         justify-content: center;
         align-items: center;
         @include formatCard;
-        background-color: $light-grey;
         gap: $gap;
 
         label {
@@ -32,6 +63,7 @@
             input {
                 width: 100%;
                 padding: $padding;
+                border: none;
             }
 
             small {
@@ -46,10 +78,6 @@
             &:disabled{
                 @include buttonDisable;
             }
-        }
-
-        a {
-            color: $black;
         }
     }
 }
