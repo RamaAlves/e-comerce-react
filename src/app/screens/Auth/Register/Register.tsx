@@ -19,7 +19,7 @@ export function Register() {
   const [checkPassword, setCheckPassword] = useState<boolean>(true);
   const [errorEmail, setErrorEmail] = useState<boolean>(false);
   const [available, setAvailable] = useState<boolean>(true);
-  const [complete, setComplete] = useState<boolean>(false);
+  /* const [complete, setComplete] = useState<boolean>(false); */
 
   //expresion regular para mails
   const emailRegexp = EMAIL_REGEXP;
@@ -92,12 +92,11 @@ export function Register() {
       setCheckPassword(false);
     }
   }
-  function handleCheckComplete() {
+  /* function handleCheckComplete() {
     if (
       name.length > 0 &&
       email.length > 0 &&
-      password.length > 3 &&
-      password2.length > 3 &&
+      !passwordLength &&
       checkPassword &&
       available &&
       !errorEmail
@@ -106,7 +105,7 @@ export function Register() {
     } else {
       setComplete(false);
     }
-  }
+  } */
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -137,12 +136,11 @@ export function Register() {
     >
       <form
         className={styles.form}
-        onChange={handleCheckComplete}
+        /* onChange={handleCheckComplete} */
         onSubmit={handleSubmit}
       >
         <label htmlFor="inputName">
-          {" "}
-          name:
+          Name:{" "}
           <input
             type="text"
             name="name"
@@ -151,11 +149,11 @@ export function Register() {
             onChange={(e) => {
               setName(e.target.value);
             }}
+            required
           />
         </label>
         <label htmlFor="inputEmail">
-          {" "}
-          Email:
+          Email:{" "}
           <input
             type="email"
             name="email"
@@ -167,6 +165,7 @@ export function Register() {
             onBlur={handleBlurEmail}
             aria-errormessage="emailErrorID"
             aria-invalid={!available || errorEmail}
+            required
           />
           <small
             id="msg-exist-email-ID"
@@ -184,8 +183,7 @@ export function Register() {
           </small>
         </label>
         <label htmlFor="inputPassword">
-          {" "}
-          Password:
+          Password:{" "}
           <input
             type="password"
             name="password"
@@ -197,6 +195,7 @@ export function Register() {
             onBlur={handleBlurPassword}
             aria-errormessage="passwordLengthErrorID"
             aria-invalid={passwordLength}
+            required
           />
           <small
             id="msg-error-password-length-ID"
@@ -207,8 +206,7 @@ export function Register() {
           </small>
         </label>
         <label htmlFor="inputPassword2">
-          {" "}
-          Repeat password:
+          Repeat password:{" "}
           <input
             type="password"
             name="password2"
@@ -220,6 +218,7 @@ export function Register() {
             onBlur={handleBlurPassword2}
             aria-errormessage="passwordErrorID"
             aria-invalid={!checkPassword}
+            required
           />
           <small
             id="msg-error-password-ID"
@@ -230,7 +229,15 @@ export function Register() {
           </small>
         </label>
         <button
-          disabled={!complete}
+          disabled={
+            !(
+              name.length > 0 &&
+              !passwordLength &&
+              checkPassword &&
+              available &&
+              !errorEmail
+            )
+          }
           type="submit"
           className={styles.btnRegister}
         >

@@ -15,7 +15,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AuthProvider } from "./context/AuthContext";
 import { ErrorLogin } from "./screens/Auth/ErrorLogin/ErrorLogin";
-import { UserProvider } from "./context/UserContext";
+/* import { UserProvider } from "./context/UserContext"; */
 import { RegisterSuccess } from "./screens/Auth/RegisterSuccess/RegisterSuccess";
 
 const queryClient = new QueryClient();

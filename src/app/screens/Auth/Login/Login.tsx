@@ -23,12 +23,12 @@ export function Login() {
   const emailRegexp = EMAIL_REGEXP;
 
   //states
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-    hasErrorPassword: false,
+  const [errors, setErrors] = useState({
+    hasErrorPassword: true,
     hasErrorEmail: false,
-  });
+    hasErrorMailLength:true
+  });/* 
+  const [active, setActive] = useState<boolean>(false); */
 
   const signin = useMutation(
     async (data: UserLoginData) => {
@@ -58,22 +58,24 @@ export function Login() {
     }
   );
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  /* function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { target } = e;
     const { name, value } = target;
 
-    const newValues = {
-      ...values,
+    const newerrors = {
+      ...errors,
       [name]: value,
     };
 
-    setValues(newValues);
-  }
+    setErrors(newerrors);
+  } */
   function handleBlurEmail(e: React.FocusEvent<HTMLInputElement>) {
     const { target } = e;
     const { value: mail } = target;
     const hasErrorEmail = !emailRegexp.test(mail);
-    setValues((prevValues) => ({ ...prevValues, hasErrorEmail }));
+    const hasErrorMailLength = mail.length<1
+    setErrors((prevErrors) => ({ ...prevErrors, hasErrorEmail, hasErrorMailLength }));
+    /* activeButton(); */
   }
 
   function handleBlurPassword(e: React.FocusEvent<HTMLInputElement>) {
@@ -81,14 +83,26 @@ export function Login() {
     const { value: password } = target;
     if (password.length < 4) {
       const hasErrorPassword = true;
-      setValues((prevValues) => ({ ...prevValues, hasErrorPassword }));
+      setErrors((prevErrors) => ({ ...prevErrors, hasErrorPassword }));
     } else {
       const hasErrorPassword = false;
-      setValues((prevValues) => ({ ...prevValues, hasErrorPassword }));
+      setErrors((prevErrors) => ({ ...prevErrors, hasErrorPassword }));
+    }
+    /* activeButton(); */
+  }
+
+  /* function activeButton() {
+    if (errors.email.length > 1 && errors.password.length > 2) {
+      if (errors.hasErrorEmail || errors.hasErrorPassword) {
+        setActive(false);
+      } else {
+        setActive(true);
+      }
+    } else {
+      setActive(false);
     }
   }
-  
-
+ */
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -107,26 +121,25 @@ export function Login() {
         darkMode ? styles.darkMode : styles.lightMode,
       ].join(" ")}
     >
-      <form
-        className={styles.form}
-        onSubmit={handleSubmit}
-      >
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="inputEmail">
           Email:{" "}
           <input
             type="email"
             name="email"
             id="inputEmail"
-            onChange={handleChange}
+            /*             value={errors.email} */
+            /* onChange={handleChange} */
             onBlur={handleBlurEmail}
             aria-errormessage="emailErrorID"
-            aria-invalid={values.hasErrorEmail}
-          />
+            aria-invalid={errors.hasErrorEmail}
+            required
+            />
           <small
             id="msg-exist-email-ID"
             aria-live="assertive"
-            style={{ visibility: values.hasErrorEmail ? "visible" : "hidden" }}
-          >
+            style={{ visibility: errors.hasErrorEmail ? "visible" : "hidden" }}
+            >
             Please enter a valid email
           </small>
         </label>
@@ -136,28 +149,31 @@ export function Login() {
             type="password"
             name="password"
             id="inputPassword"
-            onChange={handleChange}
+            /*             value={errors.password}
+            onChange={handleChange} */
             onBlur={handleBlurPassword}
             aria-errormessage="passwordLengthErrorID"
-            aria-invalid={values.hasErrorPassword}
-          />
+            aria-invalid={errors.hasErrorPassword}
+            required
+            />
           <small
             id="msg-error-password-length-ID"
             aria-live="assertive"
             style={{
-              visibility: values.hasErrorPassword ? "visible" : "hidden",
+              visibility: (errors.hasErrorPassword&&errors.hasErrorMailLength&&errors.hasErrorEmail) ? "visible" : "hidden",
             }}
           >
             Password must contain at least 4 characters.
           </small>
         </label>
         <button
-          disabled={values.hasErrorEmail || values.hasErrorPassword}
+          disabled={ errors.hasErrorMailLength||errors.hasErrorEmail || errors.hasErrorPassword}
           type="submit"
           className={styles.btnLogin}
         >
           Login
         </button>
+        <p>or</p>
         <Link to="/register">Register</Link>
       </form>
     </main>

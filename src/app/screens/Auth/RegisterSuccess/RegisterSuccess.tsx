@@ -8,7 +8,7 @@ export function RegisterSuccess() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { data } = state;
-  useEffect(() => {
+  /* useEffect(() => {
     setTimeout(() => {
       navigate("/login");
     }, 5000);
@@ -18,7 +18,7 @@ export function RegisterSuccess() {
     return () => {
       clearInterval(interval);
     };
-  });
+  }); */
   return (
     <main
       className={[
@@ -26,15 +26,19 @@ export function RegisterSuccess() {
         darkMode ? styles.darkMode : styles.lightMode,
       ].join(" ")}
     >
-      <p>Usuario creado con exito! Ya puede iniciar sesion con {data?.name}</p>
-      <p>
-        Por favor{" "}
-        <strong>
-          <Link to="/login">inicie sesion</Link>
-        </strong>{" "}
-        para comenzar o aguarde y en <strong>{count}</strong> segundos será
-        redirigido a la pagina de logueo
-      </p>
+      <section>
+        <p>
+          Usuario creado con exito! Ya puede iniciar sesion con {data?.name}
+        </p>
+        <p>
+          Por favor{" "}
+          <strong>
+            <Link to="/login">inicie sesion</Link>
+          </strong>{" "}
+          para comenzar o aguarde y en <strong>{count}</strong> segundos será
+          redirigido a la pagina de logueo
+        </p>
+      </section>
     </main>
   );
 }

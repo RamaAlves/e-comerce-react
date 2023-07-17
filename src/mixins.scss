@@ -19,6 +19,10 @@
     max-width: 320px;
     @include borderRadius;
 }
+@mixin buttonDisable{
+    background-color: $grey;
+    color: $dark-grey;
+}
 @mixin formatButtonPurple{
     @include formatButton;
     background-color: $purple;

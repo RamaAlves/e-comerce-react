@@ -1,6 +1,51 @@
+@import  "../../../../variables.scss";
+@import "../../../../mixins.scss";
+
 .darkMode{
 
 }
 .lightMode{
 
+}
+.main{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include formatCard;
+        background-color: $light-grey;
+        gap: $gap;
+        label{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            input{
+                width: 100%;
+                padding:$padding;
+            }
+            small{
+                width: 100%;
+                color: $red
+            }
+        }
+        .btnLogin{
+            @include formatButtonPurple;
+            font-size: $button-login;
+            &:disabled {
+                @include buttonDisable;
+            }
+        }
+        a{
+            color: $black;
+        }
+    }
 }
