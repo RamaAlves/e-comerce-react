@@ -8,7 +8,7 @@ export function RegisterSuccess() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { data } = state;
-  /* useEffect(() => {
+  useEffect(() => {
     setTimeout(() => {
       navigate("/login");
     }, 5000);
@@ -18,7 +18,7 @@ export function RegisterSuccess() {
     return () => {
       clearInterval(interval);
     };
-  }); */
+  });
   return (
     <main
       className={[
