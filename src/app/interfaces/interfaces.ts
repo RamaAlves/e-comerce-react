@@ -45,7 +45,7 @@ export interface CreateUserData{
   password: string;	
   avatar: string;
 }
-export interface CreateUserDataResponse{
+export interface UserDataResponse{
   id:	number;	
   name: string;
   role: string;
@@ -57,7 +57,11 @@ export interface CreateUserDataResponse{
 //Contexts
 
 export interface AuthContextType {
-  user: UserLoginDataResponse | null;
-  signin: (user: UserLoginDataResponse, callback: VoidFunction) => void;
+  accessToken: UserLoginDataResponse | null;
+  signin: (accessToken: UserLoginDataResponse, callback: VoidFunction) => void;
   signout: (callback: VoidFunction) => void;
+}
+export interface UserContextType {
+  user: UserDataResponse | null;
+  updateUser: (accessToken: UserLoginDataResponse) => void;
 }

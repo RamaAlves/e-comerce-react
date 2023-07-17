@@ -5,18 +5,18 @@ import {
 } from "../../constants/queryConstants";
 import { API_CATEGORIES, API_PRODUCTS } from "../../constants/urlsAPI";
 import { Link, useLocation } from "react-router-dom";
-import { useContext, useState, Suspense } from "react";
+import { useState, Suspense } from "react";
 import { CategorySchema, ProductSchema } from "../../interfaces/interfaces";
 import { Card } from "../../components/UI/Card/Card";
 import { Button } from "../../components/UI/Button/Button";
 import styles from "./Products.module.scss";
 import { ContainerButtons } from "../../components/UI/ContainerButtons/ContainerButtons";
-import { ThemeContext } from "../../context/ThemeContext";
 import { Loader } from "../../components/UI/Loader/Loader";
 import { ErrorComponent } from "../../components/Error/ErrorComponent";
+import { useTheme } from "../../hooks/useTheme";
 
 export function Products() {
-  const [darkMode] = useContext(ThemeContext);
+  const [darkMode] = useTheme();
   const { state } = useLocation();
   const [urlQuery, setUrlQuery] = useState(
     state?.categoryId

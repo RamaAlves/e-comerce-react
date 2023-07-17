@@ -14,6 +14,9 @@ import { Register } from "./screens/Auth/Register/Register";
 import { ThemeProvider } from "./context/ThemeContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AuthProvider } from "./context/AuthContext";
+import { ErrorLogin } from "./screens/Auth/ErrorLogin/ErrorLogin";
+import { UserProvider } from "./context/UserContext";
+import { RegisterSuccess } from "./screens/Auth/RegisterSuccess/RegisterSuccess";
 
 const queryClient = new QueryClient();
 
@@ -22,21 +25,25 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <AuthProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route element={<Layout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="/categories" element={<Categories />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/products/:id" element={<ProductDetails />} />
-                <Route path="/products/create" element={<CreateProduct />} />
-                <Route path="/products/edit/:id" element={<EditProduct />} />
-                <Route path="/cart-detail" element={<Cart />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
+          {/* <UserProvider> */}
+            <BrowserRouter>
+              <Routes>
+                <Route element={<Layout />}>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/categories" element={<Categories />} />
+                  <Route path="/products" element={<Products />} />
+                  <Route path="/products/:id" element={<ProductDetails />} />
+                  <Route path="/products/create" element={<CreateProduct />} />
+                  <Route path="/products/edit/:id" element={<EditProduct />} />
+                  <Route path="/cart-detail" element={<Cart />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/error/login" element={<ErrorLogin />} />
+                  <Route path="/register/success" element={<RegisterSuccess/>} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          {/* </UserProvider> */}
         </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>

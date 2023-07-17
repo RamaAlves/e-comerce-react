@@ -1,34 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
+import {
+  AuthContextType,
+  ChildrenType,
+  UserLoginDataResponse,
+} from "../interfaces/interfaces";
 import { ACCESS_TOKEN } from "../constants/localStorageConstants";
-import { AuthContextType, ChildrenType, UserLoginDataResponse } from "../interfaces/interfaces";
-
-
+/* import { useUser } from "../hooks/useUser";
+import { useQuery } from "react-query";
+import { QUERY_KEY_USER_AUTH } from "../constants/queryConstants";
+import { API_AUTH } from "../constants/urlsAPI"; */
 
 export const AuthContext = React.createContext<AuthContextType>(null!);
 
 export function AuthProvider({ children }: ChildrenType) {
-  const [user, setUser] = React.useState<UserLoginDataResponse | null>(null);
+  
+  const [accessToken, setAccessToken] =
+    React.useState<UserLoginDataResponse | null>(null);
+  /* const user = useUser(); */
+  
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem(ACCESS_TOKEN)!);
+    if (token) {
+      setAccessToken(token);
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem(ACCESS_TOKEN, JSON.stringify(accessToken));
+  }, [accessToken]);
+    
 
-  //const foo = JSON.parse(localStorage.getItem(ACCESS_TOKEN));
+  const signin = (
+    accessToken: UserLoginDataResponse,
+    callback: VoidFunction
+  ) => {
+    setAccessToken(accessToken);
 
-  const signin = (newUser: UserLoginDataResponse, callback: VoidFunction) => {
-    setUser(newUser);
-    /* localStorage.setItem(
-      ACCESS_TOKEN,
-      JSON.stringify({ newUser })
-    ); */
-    return callback();
+    callback()
   };
 
   const signout = (callback: VoidFunction) => {
-    setUser(null);
-    // localStorage.removeItem(ACCESS_TOKEN);
+    setAccessToken(null);
+    localStorage.removeItem(ACCESS_TOKEN);
     return callback();
   };
 
-  const value = { user, signin, signout };
+  const value = { accessToken, signin, signout };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
-
-
