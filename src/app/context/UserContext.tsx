@@ -24,10 +24,10 @@ export function UserProvider({ children }: ChildrenType) {
     error: userDataError,
   } = useQuery([QUERY_KEY_USER_AUTH, auth.accessToken], fetchUserAuth); */
 
-  /* const updateUser = (userData:any) => {
+  const updateUser = (userData:UserDataResponse) => {
     setUser(userData);
-  }; */
+  };
 
-  const value = [user, setUser];
+  const value = {user, updateUser};
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
