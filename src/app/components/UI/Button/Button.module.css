@@ -1,16 +1,22 @@
 .button {
+  border: 1px solid #4b0d89;
+  font-size: 16px;
   background-color: #ece7e7;
   color: #4b0d89;
   padding: 12px;
-  width: 320px;
+  min-width: 120px;
+  max-width: 320px;
   border-radius: 0.375rem;
 }
 
-.buy {
+.purple {
+  border: 1px solid #4b0d89;
+  font-size: 16px;
   background-color: #ece7e7;
   color: #4b0d89;
   padding: 12px;
-  width: 320px;
+  min-width: 120px;
+  max-width: 320px;
   border-radius: 0.375rem;
   background-color: #4b0d89;
   color: #d9b4ff;

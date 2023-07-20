@@ -3,6 +3,7 @@ import style from "./Nav.module.scss";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { ThemeButton } from "../UI/ThemeButton/ThemeButton";
+import { AuthStatus } from "../Auth/AuthStatus";
 
 export function Nav() {
   const [darkMode] = useContext(ThemeContext);
@@ -97,17 +98,16 @@ export function Nav() {
         ].join(" ")}
       >
         <div className={style.userOption}>
-          <Link
+          {/* <Link
             to="/login"
             onClick={() => {
               setExpandedMenu(!expandedMenu);
             }}
           >
             Iniciar sesion
-          </Link>
-          {/* <Link to="/logout">
-            Cerrar Sesion
-        </Link> */}
+          </Link> */}
+          <AuthStatus onSetExpandedMenu={setExpandedMenu} onExpandedMenu={expandedMenu} />
+          
           <Link
             to="/cart-detail"
             onClick={() => {

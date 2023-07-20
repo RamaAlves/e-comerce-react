@@ -1,0 +1,74 @@
+@import  "../../../../variables.scss";
+@import "../../../../mixins.scss";
+
+.darkMode{
+    background-color: $dark-grey;
+    .form{
+        background-color: $light-grey;
+        label{
+            input{
+                background-color: $dark-grey;
+            }
+        }
+        a {
+            color: $purple;
+        }
+    }
+}
+.lightMode{
+    background-color: $white;
+    
+        .form {
+            background-color: $light-grey;
+    
+            label {
+                input {
+                    background-color: $grey;
+                }
+            }
+    
+            a {
+                color: $purple;
+            }
+        }
+}
+.main{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include formatCard;
+        gap: $gap;
+        label{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            input{
+                width: 100%;
+                padding:$padding;
+                border: none;
+            }
+            small{
+                width: 100%;
+                color: $red
+            }
+        }
+        .btnLogin{
+            @include formatButtonPurple;
+            font-size: $button-login;
+            &:disabled {
+                @include buttonDisable;
+            }
+        }
+        
+    }
+}

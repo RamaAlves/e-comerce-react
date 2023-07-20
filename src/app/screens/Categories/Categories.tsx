@@ -5,12 +5,12 @@ import { CategorySchema } from "../../interfaces/interfaces";
 import { Link } from "react-router-dom";
 import { Card } from "../../components/UI/Card/Card";
 import styles from "./Categories.module.scss";
-import { useContext } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
 import { Loader } from "../../components/UI/Loader/Loader";
+import { ErrorComponent } from "../../components/Error/ErrorComponent";
+import { useTheme } from "../../hooks/useTheme";
 
 export function Categories() {
-  const [darkMode] = useContext(ThemeContext);
+  const [darkMode] = useTheme();
   async function fetchCategories() {
     const res = await fetch(API_CATEGORIES);
     const json = await res.json();
@@ -33,7 +33,7 @@ export function Categories() {
       ].join(" ")}
     >
       {error ? (
-        <h1>Error</h1>
+        <ErrorComponent />
       ) : (
         <>
           <h1 className={styles.title}>Categories</h1>

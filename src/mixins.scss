@@ -10,6 +10,7 @@
     @include borderRadius;
 }
 @mixin formatButton{
+    border: 1px solid $purple;
     font-size: $text;
     background-color: $white;
     color:$purple;
@@ -17,8 +18,13 @@
     min-width: 120px;
     max-width: 320px;
     @include borderRadius;
+    cursor:pointer;
 }
-@mixin formatButtonBuy{
+@mixin buttonDisable{
+    background-color: $grey;
+    color: $dark-grey;
+}
+@mixin formatButtonPurple{
     @include formatButton;
     background-color: $purple;
     color: $light-purple;
