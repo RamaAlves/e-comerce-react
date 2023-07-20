@@ -17,9 +17,9 @@ export function ThemeProvider({ children }: ChildrenType) {
       setDarkMode(theme);
     }
   }, []);
-  useEffect(() => {
+  /* useEffect(() => {
     localStorage.setItem(DARK_MODE, JSON.stringify(darkMode));
-  }, [darkMode]);
+  }, [darkMode]); */
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );

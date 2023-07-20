@@ -1,11 +1,13 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../../context/ThemeContext";
 import style from "./ThemeButton.module.scss";
+import { useTheme } from "../../../hooks/useTheme";
+import { DARK_MODE } from "../../../constants/localStorageConstants";
 
 export function ThemeButton() {
-  const [darkMode, setDarkMode] = useContext(ThemeContext);
+  const [darkMode, setDarkMode] = useTheme();
   function changeTheme(state: boolean) {
     setDarkMode(state);
+    //save themeMode in localStorage
+    localStorage.setItem(DARK_MODE, JSON.stringify(state));
   }
   return (
     <div className={darkMode ? style.darkContainer : style.container}>
