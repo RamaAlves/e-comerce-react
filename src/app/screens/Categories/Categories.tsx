@@ -2,12 +2,11 @@ import { useQuery } from "react-query";
 import { QUERY_KEY_CATEGORIES } from "../../constants/queryConstants";
 import { API_CATEGORIES } from "../../constants/urlsAPI";
 import { CategorySchema } from "../../interfaces/interfaces";
-import { Link } from "react-router-dom";
-import { Card } from "../../components/UI/Card/Card";
 import styles from "./Categories.module.scss";
 import { Loader } from "../../components/UI/Loader/Loader";
 import { ErrorComponent } from "../../components/Error/ErrorComponent";
 import { useTheme } from "../../hooks/useTheme";
+import { CategoryCard } from "../../components/UI/CategoryCard/CategoryCard";
 
 export function Categories() {
   const [darkMode] = useTheme();
@@ -17,7 +16,6 @@ export function Categories() {
     if (json.statusCode === 404) {
       throw new Error(json);
     }
-    console.log(json);
     return json;
   }
   const { data, status, error } = useQuery(
@@ -42,20 +40,8 @@ export function Categories() {
             {data &&
               data.map((category: CategorySchema) => {
                 return (
-                  <Link
-                    key={category.id}
-                    to={`/products`}
-                    state={{ categoryId: category.id }}
-                  >
-                    <Card>
-                      <h1>{category.name}</h1>
-                      <p>{category.id}</p>
-                      <img
-                        src={category.image}
-                        alt={`imagen de ${category.name}`}
-                      />
-                    </Card>
-                  </Link>
+                  <CategoryCard key={category.id} category={category} />
+                  
                 );
               })}
           </section>

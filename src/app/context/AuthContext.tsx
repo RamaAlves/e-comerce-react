@@ -34,7 +34,6 @@ export function AuthProvider({ children }: ChildrenType) {
     
   const checkUser = useMutation(
     async (data: UserLoginDataResponse) => {
-      console.log(data)
       const res = await fetch(API_AUTH + "/profile", {
         method: "GET",
         headers: { "Authorization": `Bearer ${data?.access_token}` },
@@ -47,7 +46,6 @@ export function AuthProvider({ children }: ChildrenType) {
     },
     {
       onSuccess: (data) => {
-        console.log(data);
         updateUser(data)
       },
       onError: (error) => {

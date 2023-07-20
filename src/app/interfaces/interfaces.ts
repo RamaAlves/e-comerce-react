@@ -20,6 +20,13 @@ export interface ProductSchema {
   },
   images: string[]
 }
+export interface ProductSchemaCreate {
+  title: string,
+  price: number,
+  description: string,
+  categoryId: number,
+  images: string[]
+}
 
 export interface  ChildrenType {
     children: React.ReactNode

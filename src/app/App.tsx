@@ -18,7 +18,8 @@ import { ErrorLogin } from "./screens/Auth/ErrorLogin/ErrorLogin";
 import { UserProvider } from "./context/UserContext";
 import { RegisterSuccess } from "./screens/Auth/RegisterSuccess/RegisterSuccess";
 import { RedirectAuth } from "./components/RedirectAuth/RedirectAuth";
-import { RequireAuth } from "./components/RequiereAuth/RequireAuth";
+import { RequireAuth } from "./components/RequireAuth/RequireAuth";
+import { RequireAdmin } from "./components/RequireAdmin/RequireAdmin";
 
 const queryClient = new QueryClient();
 
@@ -38,20 +39,27 @@ function App() {
                   <Route
                     path="/products/create"
                     element={
-                      <RequireAuth>
+                      <RequireAdmin>
                         <CreateProduct />
-                      </RequireAuth>
+                      </RequireAdmin>
                     }
                   />
                   <Route
                     path="/products/edit/:id"
                     element={
-                      <RequireAuth>
+                      <RequireAdmin>
                         <EditProduct />
+                      </RequireAdmin>
+                    }
+                  />
+                  <Route
+                    path="/cart-detail"
+                    element={
+                      <RequireAuth>
+                        <Cart />
                       </RequireAuth>
                     }
                   />
-                  <Route path="/cart-detail" element={<Cart />} />
                   <Route
                     path="/login"
                     element={

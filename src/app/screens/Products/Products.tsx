@@ -4,16 +4,14 @@ import {
   QUERY_KEY_PRODUCTS,
 } from "../../constants/queryConstants";
 import { API_CATEGORIES, API_PRODUCTS } from "../../constants/urlsAPI";
-import { Link, useLocation } from "react-router-dom";
-import { useState, Suspense } from "react";
+import { useLocation } from "react-router-dom";
+import { useState} from "react";
 import { CategorySchema, ProductSchema } from "../../interfaces/interfaces";
-import { Card } from "../../components/UI/Card/Card";
-import { Button } from "../../components/UI/Button/Button";
 import styles from "./Products.module.scss";
-import { ContainerButtons } from "../../components/UI/ContainerButtons/ContainerButtons";
 import { Loader } from "../../components/UI/Loader/Loader";
 import { ErrorComponent } from "../../components/Error/ErrorComponent";
 import { useTheme } from "../../hooks/useTheme";
+import { ProductCard } from "../../components/UI/ProductCard/ProductCard";
 
 export function Products() {
   const [darkMode] = useTheme();
@@ -29,8 +27,8 @@ export function Products() {
   async function fetchProducts() {
     const res = await fetch(urlQuery);
     const json = await res.json();
-    if (json.error == 'Not Found') {
-      throw new Error(json)
+    if (json.error == "Not Found") {
+      throw new Error(json);
     }
     return json;
   }
@@ -60,14 +58,14 @@ export function Products() {
     let FilterData = new FormData(e.currentTarget);
     // add min price to query
     let minPriceInput = FilterData.get("minPrice");
-    if (minPriceInput != "" || !minPriceInput.includes('-')) {
+    if (minPriceInput != "" || !minPriceInput.includes("-")) {
       query += `/?price_min=${minPriceInput}`;
     } else {
       query += `/?price_min=${MIN_PRICE}`;
     }
     // add max price to query
     let maxPriceInput = FilterData.get("maxPrice");
-    if (maxPriceInput != "" || !maxPriceInput.includes('-')) {
+    if (maxPriceInput != "" || !maxPriceInput.includes("-")) {
       query += `&price_max=${maxPriceInput}`;
     } else {
       query += `&price_max=${MAX_PRICE}`;
@@ -92,61 +90,42 @@ export function Products() {
     >
       <section className={styles.containerFilter}>
         <form className={styles.formFilter} onSubmit={handleFilter}>
-          {categories && (
-            <>
-              <label htmlFor="categoryInput">Categoria: </label>
-              <select name="category" id="categoryInput">
-                {categoriesError}
-                {categoriesStatus === "loading" && <Loader />}
-                {categories.map((category: CategorySchema) => {
-                  return (
-                    <option key={category.id} value={category.name}>
-                      {category.name}
-                    </option>
-                  );
-                })}
-              </select>
-              <label htmlFor="min">Min price: </label>
-              <input type="number" id="min" name="minPrice" />
-              <label htmlFor="max">Max price: </label>
-              <input type="number" id="max" name="maxPrice" />
-              <button type="submit">Apply</button>
-            </>
-          )}
+          <>
+            {categoriesError}
+            {categoriesStatus === "loading" && <Loader />}
+            {categories && (
+              <>
+                <label htmlFor="categoryInput">Categoria: </label>
+                <select name="category" id="categoryInput">
+                  {categories.map((category: CategorySchema) => {
+                    return (
+                      <option key={category.id} value={category.name}>
+                        {category.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </>
+            )}
+            <label htmlFor="min">Min price: </label>
+            <input type="number" id="min" name="minPrice" />
+            <label htmlFor="max">Max price: </label>
+            <input type="number" id="max" name="maxPrice" />
+            <button type="submit">Apply</button>
+          </>
         </form>
       </section>
       <section className={styles.containerProducts}>
         {productsError ? (
-          <ErrorComponent/>
+          <ErrorComponent />
         ) : (
           <>
             {productsStatus === "loading" && <Loader />}
             {products &&
               products.map((product: ProductSchema) => {
                 return (
-                  <Card key={product.id}>
-                    <h3>{product.title}</h3>
-                    <p>{product.category.name}</p>
-                    <Suspense fallback={<Loader />}>
-                      <img
-                        src={product.images[0]}
-                        alt={`imagen de ${product.title}`}
-                        onError={(e) =>
-                          (e.currentTarget.src =
-                            "/images/imagesProductsDefault/FallbackProduct.jpg")
-                        }
-                      />
-                    </Suspense>
-                    <ContainerButtons>
-                      <Link to={`/products/${product.id}`}>
-                        <Button purple={false}>Details</Button>
-                      </Link>
-                      <Link to={`/products/${product.id}`}>
-                        <Button purple={true}>Buy</Button>
-                      </Link>
-                    </ContainerButtons>
-                  </Card>
-                );
+                  <ProductCard key={product.id} product={product} />
+                )
               })}
           </>
         )}
