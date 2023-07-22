@@ -32,9 +32,6 @@ export function ProductCard({product}:Product) {
         <Link to={`/products/${product.id}`}>
           <Button purple={true}>Buy</Button>
         </Link>
-        <Link to={`/products/create`}>
-          <Button purple={true}>create</Button>
-        </Link>
       </ContainerButtons>
     </Card>
   );

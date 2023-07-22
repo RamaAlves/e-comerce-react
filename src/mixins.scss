@@ -5,9 +5,9 @@
 }
 
 @mixin formatCard{
-    padding: $padding;
+    padding-top: $padding;
+    padding-bottom: $padding;
     width: 320px;
-    @include borderRadius;
 }
 @mixin formatButton{
     border: 1px solid $purple;

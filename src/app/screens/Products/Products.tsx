@@ -4,7 +4,7 @@ import {
   QUERY_KEY_PRODUCTS,
 } from "../../constants/queryConstants";
 import { API_CATEGORIES, API_PRODUCTS } from "../../constants/urlsAPI";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState} from "react";
 import { CategorySchema, ProductSchema } from "../../interfaces/interfaces";
 import styles from "./Products.module.scss";
@@ -12,10 +12,12 @@ import { Loader } from "../../components/UI/Loader/Loader";
 import { ErrorComponent } from "../../components/Error/ErrorComponent";
 import { useTheme } from "../../hooks/useTheme";
 import { ProductCard } from "../../components/UI/ProductCard/ProductCard";
+import { useUser } from "../../hooks/useUser";
 
 export function Products() {
   const [darkMode] = useTheme();
   const { state } = useLocation();
+  const { user } = useUser();
   const [urlQuery, setUrlQuery] = useState(
     state?.categoryId
       ? API_PRODUCTS + `/?categoryId=${state?.categoryId}`
@@ -118,18 +120,21 @@ export function Products() {
       <section className={styles.containerProducts}>
         {productsError ? (
           <ErrorComponent />
-        ) : (
-          <>
+          ) : (
+            <>
             {productsStatus === "loading" && <Loader />}
             {products &&
               products.map((product: ProductSchema) => {
-                return (
-                  <ProductCard key={product.id} product={product} />
-                )
+                return <ProductCard key={product.id} product={product} />;
               })}
           </>
         )}
       </section>
+      {user.role === "admin" && (
+        <section className={styles.containerAdminOptions}>
+          <Link className={styles.buttonCreate} to="/products/create">Create Product</Link>
+        </section>
+      )}
     </main>
   );
 }
