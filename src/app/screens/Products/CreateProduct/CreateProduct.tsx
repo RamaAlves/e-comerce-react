@@ -6,7 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "react-query";
 import { QUERY_KEY_CATEGORIES } from "../../../constants/queryConstants";
 import { Loader } from "../../../components/UI/Loader/Loader";
-import { CategorySchema, ProductSchemaCreate } from "../../../interfaces/interfaces";
+import {
+  CategorySchema,
+  ProductSchemaCreate,
+} from "../../../interfaces/interfaces";
 export function CreateProduct() {
   //Theme
   const [darkMode] = useTheme();
@@ -24,32 +27,29 @@ export function CreateProduct() {
   const [errorDescription, setErrorDescription] = useState<boolean>(false);
   const [errorPrice, setErrorPrice] = useState<boolean>(false);
 
-
-    const createProduct = useMutation(
-      async (data: ProductSchemaCreate) => {
-        const res = await fetch(API_PRODUCTS, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
-        const json = await res.json();
-        if (json.statusCode === 401) {
-          throw new Error("Error format");
-        }
-        return json;
-      },
-      {
-        onSuccess: (data) => {
-          console.log(data);
-          const id = data?.id
-          navigate(`/products/${id}`, {replace:true});
-        },
-        onError: (error) => {
-          console.error("Try login again. " + error);
-          /* navigate("/error/login"); */
-        },
+  const createProduct = useMutation(
+    async (data: ProductSchemaCreate) => {
+      const res = await fetch(API_PRODUCTS, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      if (json.statusCode === 401) {
+        throw new Error("Error create product");
       }
-    );
+      return json;
+    },
+    {
+      onSuccess: (data) => {
+        const id = data?.id;
+        navigate(`/products/${id}`, { replace: true });
+      },
+      onError: (error) => {
+        console.error("Try again. " + error);
+      },
+    }
+  );
   const {
     data: categories,
     status: categoriesStatus,
@@ -65,34 +65,40 @@ export function CreateProduct() {
 
   function handleBlurTitle() {
     if (title.length > 0) {
-      setErrorTitle(false)
+      setErrorTitle(false);
     } else {
-      setErrorTitle(true)
+      setErrorTitle(true);
     }
   }
   function handleBlurDescription() {
     if (description.length > 0) {
-      setErrorDescription(false)
+      setErrorDescription(false);
     } else {
-      setErrorDescription(true)
+      setErrorDescription(true);
     }
   }
   function handleBlurPrice() {
     if (price > 0) {
-      setErrorPrice(false)
+      setErrorPrice(false);
     } else {
-      setErrorPrice(true)
+      setErrorPrice(true);
     }
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    let urlImage =image
+    let urlImage = image;
     if (urlImage.length == 0) {
-      urlImage="https://placeimg.com/640/480/any?r=0.9178516507833767";
+      urlImage = "https://placeimg.com/640/480/any?r=0.9178516507833767";
     }
-    const product:ProductSchemaCreate = { "title":title, "price":price, "description":description, "categoryId":category, images:[urlImage] }
-    
+    const product: ProductSchemaCreate = {
+      title: title,
+      price: price,
+      description: description,
+      categoryId: category,
+      images: [urlImage],
+    };
+
     createProduct.mutate(product);
   }
 
@@ -103,10 +109,7 @@ export function CreateProduct() {
         darkMode ? styles.darkMode : styles.lightMode,
       ].join(" ")}
     >
-      <form
-        className={styles.form}
-        onSubmit={handleSubmit}
-      >
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="inputName">
           Title:{" "}
           <input
@@ -154,7 +157,6 @@ export function CreateProduct() {
           >
             Price must be greater than 0
           </small>
-          
         </label>
         <label htmlFor="inputDescription">
           Description:{" "}

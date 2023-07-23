@@ -13,7 +13,6 @@ import { Link } from "react-router-dom";
 export function Categories() {
   const [darkMode] = useTheme();
   const { user } = useUser();
-  console.log(user)
   async function fetchCategories() {
     const res = await fetch(API_CATEGORIES);
     const json = await res.json();
