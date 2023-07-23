@@ -130,7 +130,7 @@ export function Products() {
           </>
         )}
       </section>
-      {user.role === "admin" && (
+      {user?.role === "admin" && (
         <section className={styles.containerAdminOptions}>
           <Link className={styles.buttonCreate} to="/products/create">Create Product</Link>
         </section>

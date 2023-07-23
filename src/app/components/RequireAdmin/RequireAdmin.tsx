@@ -7,8 +7,7 @@ export function RequireAdmin({ children }: ChildrenType) {
   const { user } = useUser();
   const location = useLocation();
 
-  console.warn("cambiar customer por admin cuando terminen las pruebas");
-  if (user?.role != "customer") {
+  if (user?.role != "admin") {
     // Redirect them to the /login page, but save the current location they were
     // trying to go to when they were redirected. This allows us to send them
     // along to that page after they login, which is a nicer user experience

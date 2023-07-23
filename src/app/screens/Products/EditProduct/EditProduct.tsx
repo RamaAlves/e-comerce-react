@@ -72,7 +72,6 @@ export function EditProduct() {
       },
       onError: (error) => {
         console.error("Edit product error. " + error);
-        /* navigate("/error/login"); */
       },
     }
   );

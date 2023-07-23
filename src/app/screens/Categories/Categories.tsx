@@ -7,9 +7,13 @@ import { Loader } from "../../components/UI/Loader/Loader";
 import { ErrorComponent } from "../../components/Error/ErrorComponent";
 import { useTheme } from "../../hooks/useTheme";
 import { CategoryCard } from "../../components/UI/CategoryCard/CategoryCard";
+import { useUser } from "../../hooks/useUser";
+import { Link } from "react-router-dom";
 
 export function Categories() {
   const [darkMode] = useTheme();
+  const { user } = useUser();
+  console.log(user)
   async function fetchCategories() {
     const res = await fetch(API_CATEGORIES);
     const json = await res.json();
@@ -30,6 +34,13 @@ export function Categories() {
         darkMode ? styles.darkMode : styles.lightMode,
       ].join(" ")}
     >
+      {user?.role === "admin" && (
+        <section className={styles.containerAdminOptions}>
+          <Link className={styles.buttonCreate} to="/categories/create">
+            Create Category
+          </Link>
+        </section>
+      )}
       {error ? (
         <ErrorComponent />
       ) : (
@@ -39,10 +50,7 @@ export function Categories() {
             {status === "loading" && <Loader />}
             {data &&
               data.map((category: CategorySchema) => {
-                return (
-                  <CategoryCard key={category.id} category={category} />
-                  
-                );
+                return <CategoryCard key={category.id} category={category} />;
               })}
           </section>
         </>

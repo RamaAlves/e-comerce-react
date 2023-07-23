@@ -8,6 +8,11 @@ export interface CategorySchema {
   updatedAt: string;
 }
 
+export interface CategorySchemaCreate {
+  image: string;
+  name: string;
+}
+
 export interface ProductSchema {
   id: number,
   title: string,

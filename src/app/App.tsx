@@ -20,6 +20,8 @@ import { RegisterSuccess } from "./screens/Auth/RegisterSuccess/RegisterSuccess"
 import { RedirectAuth } from "./components/RedirectAuth/RedirectAuth";
 import { RequireAuth } from "./components/RequireAuth/RequireAuth";
 import { RequireAdmin } from "./components/RequireAdmin/RequireAdmin";
+import { CreateCategory } from "./screens/Categories/CreateCategory/CreateCategory";
+import { EditCategory } from "./screens/Categories/EditCategory/EditCategory";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +36,22 @@ function App() {
                 <Route element={<Layout />}>
                   <Route path="/" element={<Home />} />
                   <Route path="/categories" element={<Categories />} />
+                  <Route
+                    path="/categories/edit/:id"
+                    element={
+                      <RequireAdmin>
+                        <EditCategory />
+                      </RequireAdmin>
+                    }
+                  />
+                  <Route
+                    path="/categories/create"
+                    element={
+                      <RequireAdmin>
+                        <CreateCategory />
+                      </RequireAdmin>
+                    }
+                  />
                   <Route path="/products" element={<Products />} />
                   <Route path="/products/:id" element={<ProductDetails />} />
                   <Route
