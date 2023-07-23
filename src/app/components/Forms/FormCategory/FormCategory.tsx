@@ -3,6 +3,7 @@ import { useTheme } from "../../../hooks/useTheme";
 import styles from "./FormCategory.module.scss";
 import { Link } from "react-router-dom";
 import { CategorySchema, CategorySchemaCreate } from "../../../interfaces/interfaces";
+import { RANDOM_IMAGE } from "../../../constants/generalConstants";
 /* import { MutationFunction } from "react-query/types/core/types"; */
 
 interface FormCategory{
@@ -32,7 +33,7 @@ export function FormCategory(props: FormCategory) {
     e.preventDefault();
     let urlImage = image;
     if (urlImage.length == 0) {
-      urlImage = "https://placeimg.com/640/480/any?r=0.9178516507833767";
+      urlImage = RANDOM_IMAGE;
     }
     const category: CategorySchemaCreate = {
       name: name,
