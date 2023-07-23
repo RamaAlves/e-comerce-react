@@ -6,7 +6,6 @@ import styles from "./ProductDetails.module.scss";
 import { useTheme } from "../../../hooks/useTheme";
 import { ErrorComponent } from "../../../components/Error/ErrorComponent";
 import { Loader } from "../../../components/UI/Loader/Loader";
-import { ProductCard } from "../../../components/UI/ProductCard/ProductCard";
 import { Carrousel } from "../../../components/Carrousel/Carrousel";
 import { useUser } from "../../../hooks/useUser";
 import { ContainerButtons } from "../../../components/UI/ContainerButtons/ContainerButtons";
