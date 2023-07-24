@@ -10,12 +10,12 @@ import { RANDOM_IMAGE } from "../../../constants/generalConstants";
 /* import { MutationFunction } from "react-query/types/core/types"; */
 
 interface FormCategory {
-  onSubmit: any;
+  onSubmit: unknown;
   category?: CategorySchema;
 }
 
 export function FormCategory(props: FormCategory) {
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
   const [name, setName] = useState<string>(
     props.category ? props.category.name : ""
   );
@@ -43,7 +43,12 @@ export function FormCategory(props: FormCategory) {
       image: urlImage,
     };
 
-    props.onSubmit.mutate(category);
+    if ("onSubmit" in props) {
+      const { onSubmit }: any = props;
+      if ("mutate" in onSubmit) {
+        onSubmit.mutate(category);
+      }
+    }
   }
   return (
     <form

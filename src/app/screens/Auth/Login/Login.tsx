@@ -11,7 +11,7 @@ import { EMAIL_REGEXP } from "../../../constants/regexConstants";
 
 export function Login() {
   //contexts
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
   const auth = useAuth();
 
   //router

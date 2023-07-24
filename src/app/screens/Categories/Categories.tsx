@@ -11,7 +11,7 @@ import { useUser } from "../../hooks/useUser";
 import { Link } from "react-router-dom";
 
 export function Categories() {
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
   const { user } = useUser();
   async function fetchCategories() {
     const res = await fetch(API_CATEGORIES);

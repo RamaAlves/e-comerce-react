@@ -15,7 +15,7 @@ import { createPortal } from "react-dom";
 import { Modal } from "../../../components/Modal/Modal";
 
 export function ProductDetails() {
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
   const { id } = useParams();
   const { user } = useUser();
   const navigate = useNavigate();

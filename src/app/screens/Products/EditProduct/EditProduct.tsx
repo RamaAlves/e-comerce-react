@@ -11,7 +11,7 @@ import { FormProduct } from "../../../components/Forms/FormProduct/FormProduct";
 
 export function EditProduct() {
   //Theme
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
 
   const { id } = useParams();
 
@@ -56,6 +56,7 @@ export function EditProduct() {
       },
     }
   );
+  
   return (
     <main
       className={[

@@ -6,7 +6,7 @@ import { ThemeButton } from "../UI/ThemeButton/ThemeButton";
 import { AuthStatus } from "../Auth/AuthStatus";
 
 export function Nav() {
-  const [darkMode] = useContext(ThemeContext);
+  const {darkMode} = useContext(ThemeContext);
   const [expandedMenu, setExpandedMenu] = useState(false);
   return (
     <nav

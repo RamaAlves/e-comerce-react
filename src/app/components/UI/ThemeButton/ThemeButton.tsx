@@ -3,7 +3,7 @@ import { useTheme } from "../../../hooks/useTheme";
 import { DARK_MODE } from "../../../constants/localStorageConstants";
 
 export function ThemeButton() {
-  const [darkMode, setDarkMode] = useTheme();
+  const {darkMode, setDarkMode} = useTheme();
   function changeTheme(state: boolean) {
     setDarkMode(state);
     //save themeMode in localStorage

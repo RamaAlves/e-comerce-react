@@ -14,12 +14,12 @@ import { Loader } from "../../UI/Loader/Loader";
 import { RANDOM_IMAGE } from "../../../constants/generalConstants";
 
 interface FormProduct {
-  onSubmit: any;
+  onSubmit: unknown;
   product?: ProductSchema;
 }
 export function FormProduct(props: FormProduct) {
   //Theme
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
 
   //states
   const [title, setTitle] = useState<string>(
@@ -92,7 +92,13 @@ export function FormProduct(props: FormProduct) {
       images: [urlImage],
     };
 
-    props.onSubmit.mutate(product);
+    if ("onSubmit" in props) {
+      const { onSubmit }:any = props
+      if ("mutate" in onSubmit ) {
+        onSubmit.mutate(product);
+      }
+    }
+
   }
 
   return (

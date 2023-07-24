@@ -8,7 +8,7 @@ interface Modal {
 }
 
 export function Modal(props: Modal) {
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
   return (
     <div
       className={[

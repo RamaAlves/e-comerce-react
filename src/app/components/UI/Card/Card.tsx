@@ -7,7 +7,7 @@ interface ChildrenType {
 }
 
 export function Card({ children }: ChildrenType) {
-    const [darkMode]= useContext(ThemeContext)
+    const {darkMode}= useContext(ThemeContext)
     return (
         <div className={[styles.card, darkMode? styles.darkMode: styles.lightMode].join(' ')}>
             {children}

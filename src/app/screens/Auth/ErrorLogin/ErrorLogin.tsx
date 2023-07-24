@@ -4,7 +4,7 @@ import styles from "./ErrorLogin.module.scss";
 import { useEffect, useState } from "react";
 
 export function ErrorLogin() {
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
   const [count, setCount] = useState<number>(5);
   const navigate = useNavigate();
   useEffect(() => {

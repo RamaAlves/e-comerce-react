@@ -8,7 +8,7 @@ import { API_CATEGORIES } from "../../../constants/urlsAPI";
 import { FormCategory } from "../../../components/Forms/FormCategory/FormCategory";
 
 export function CreateCategory() {
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
   const navigate = useNavigate();
 
   const createCategory = useMutation(

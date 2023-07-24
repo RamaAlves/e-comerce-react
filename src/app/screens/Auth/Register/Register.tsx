@@ -8,7 +8,7 @@ import { CreateUserData } from "../../../interfaces/interfaces";
 import { EMAIL_REGEXP } from "../../../constants/regexConstants";
 
 export function Register() {
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
