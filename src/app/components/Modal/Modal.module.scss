@@ -1,0 +1,123 @@
+@import "../../../variables.scss";
+@import "../../../mixins.scss";
+
+.darkMode{
+    .background{
+        background-color: $light-purple;
+    }
+    .modal{
+        background-color: $dark-purple;
+        p{
+            color:$white
+        }
+        button{
+            background-color: $grey;
+            color:$white;
+            &:hover{
+                background-color: $light-grey;
+            }
+        }
+        .confirm{
+            &:hover{
+                color:$green;
+            }
+            &:active{
+                background-color: $green;
+                color:$purple;
+            }
+        }
+        .cancel{
+            &:hover{
+                color:$red;
+            }
+            &:active{
+                background-color: $red;
+                color:$white;
+            }
+            
+        }
+    }
+}
+.lightMode{
+    .background{
+        background-color: $light-grey;
+    }
+    .modal{
+        background-color: $light-purple;
+        p{
+            color:$black
+        }
+        button{
+            background-color: $purple;
+            color:$white;
+            &:hover{
+                background-color: $dark-purple;
+            }
+        }
+        .confirm{
+            &:hover{
+                color:$green;
+            }
+            &:active{
+                background-color: $green;
+                color:$light-purple;
+            }
+        }
+        .cancel{
+            &:hover{
+                color:$red;
+            }
+            &:active{
+                background-color: $red;
+                color:$light-purple;
+            }
+        }
+    }
+    
+}
+.container{
+    width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    position:relative;
+    pointer-events: none;
+    .background{
+        width: 100%;
+        height: 100%;
+        position:fixed;
+        left: 0;
+        top:0;
+        z-index: 1;
+        opacity: .5;
+        pointer-events: none;
+    }
+    .modal{
+        @include formatCard;
+        z-index: 10;
+        width: 80%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        p{
+            font-size: $text;
+        }
+        .containerButtons{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            button{
+                border: none;
+                height: 60px;
+                width: 60px;
+                border-radius: 50%;
+                pointer-events: auto;
+                cursor: pointer;
+                transition: background-color .2s ease, color .2s ease;
+            }
+        }
+    }
+}

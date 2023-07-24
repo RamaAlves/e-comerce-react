@@ -78,7 +78,7 @@ export function CategoryCard({ category }: Category) {
           <Modal
             content={MODAL_MESSAGE}
             onConfirm={handleConfirmDelete}
-            onCancel={(e:React.FormEvent<HTMLFormElement>) => {
+            onCancel={(e: React.MouseEvent<HTMLElement>):void => {
               e.preventDefault();
               setShowModalDelete(false);
             }}

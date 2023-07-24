@@ -7,7 +7,7 @@ import { RANDOM_IMAGE } from "../../../constants/generalConstants";
 /* import { MutationFunction } from "react-query/types/core/types"; */
 
 interface FormCategory{
-    onSubmit: unknown
+    onSubmit: any
     category?: CategorySchema 
 }
 

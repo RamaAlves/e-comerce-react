@@ -1,13 +1,33 @@
 import { useTheme } from "../../hooks/useTheme";
-import styles from "./Modal.module.scss"
+import styles from "./Modal.module.scss";
 
-export function Modal(props: any) {
-    const [darkMode] = useTheme();
-    return(
-        <div className={[styles.modal, darkMode? styles.darkMode:styles.lightMode]. join(" ")}>
-            <p>{props.content}</p>
-            <button onClick={props.onConfirm}>✔</button>
-            <button onClick={props.onCancel}>❌</button>
-        </div>
-        )
+interface Modal {
+  content: string;
+  onConfirm?: (() => {}) | (() => void);
+  onCancel?: (() => {}) | ((e: React.MouseEvent<HTMLElement>) => void);
+}
+
+export function Modal(props: Modal) {
+  const [darkMode] = useTheme();
+  return (
+    <div
+      className={[
+        styles.container,
+        darkMode ? styles.darkMode : styles.lightMode,
+      ].join(" ")}
+    >
+      <div className={styles.background}></div>
+      <div className={styles.modal}>
+        <p>{props.content}</p>
+        <section className={styles.containerButtons}>
+          <button className={styles.confirm} onClick={props.onConfirm}>
+            ✔
+          </button>
+          <button className={styles.cancel} onClick={props.onCancel}>
+            ✖
+          </button>
+        </section>
+      </div>
+    </div>
+  );
 }

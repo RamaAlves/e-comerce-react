@@ -24,6 +24,7 @@ html {
     width: 100%;
     color-scheme: light dark;
     margin: 0;
+    position: relative;
 
     #root {
       height: 100%;
@@ -31,12 +32,21 @@ html {
       display: flex;
       flex-direction: column;
       font-family: 'Roboto', sans-serif;
-
+      
       main {
         width: 100%;
       }
-
-  
+      
+      
+    }
+    
+    #portal{
+      z-index: 1000;
+      font-family: 'Roboto', sans-serif;
+      height: 100%;
+      position:absolute;
+      top: 0;
+      left: 0;
     }
   }
 }

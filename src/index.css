@@ -19,6 +19,7 @@ html body {
   width: 100%;
   color-scheme: light dark;
   margin: 0;
+  position: relative;
 }
 html body #root {
   height: 100%;
@@ -29,4 +30,12 @@ html body #root {
 }
 html body #root main {
   width: 100%;
+}
+html body #portal {
+  z-index: 1000;
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }/*# sourceMappingURL=index.css.map */

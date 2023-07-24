@@ -1,0 +1,20 @@
+.carrousel .containerImageSelect {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+}
+.carrousel .containerImageSelect .imageSelect {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.carrousel .containerImages {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  overflow: auto;
+}
+.carrousel .containerImages .imageOption {
+  width: 80px;
+}/*# sourceMappingURL=Carrousel.module.css.map */
