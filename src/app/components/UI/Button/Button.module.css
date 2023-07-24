@@ -6,8 +6,10 @@
   padding: 12px;
   min-width: 120px;
   max-width: 320px;
+  height: 46px;
   border-radius: 0.375rem;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .purple {
@@ -18,8 +20,10 @@
   padding: 12px;
   min-width: 120px;
   max-width: 320px;
+  height: 46px;
   border-radius: 0.375rem;
   cursor: pointer;
   background-color: #4b0d89;
   color: #e9d4ff;
+  text-decoration: none;
 }/*# sourceMappingURL=Button.module.css.map */

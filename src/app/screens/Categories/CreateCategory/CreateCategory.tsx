@@ -1,6 +1,6 @@
 /* import { useState } from "react"; */
 import { useTheme } from "../../../hooks/useTheme";
-import styles from "./CreteCategory.module.scss";
+import styles from "./CreateCategory.module.scss";
 import { /* Link, */ useNavigate } from "react-router-dom";
 import { CategorySchemaCreate } from "../../../interfaces/interfaces";
 import { useMutation } from "react-query";
