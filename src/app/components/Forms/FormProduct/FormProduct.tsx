@@ -14,10 +14,10 @@ import { Loader } from "../../UI/Loader/Loader";
 import { RANDOM_IMAGE } from "../../../constants/generalConstants";
 
 interface FormProduct {
-  onSubmit: unknown;
+  onSubmit: any;
   product?: ProductSchema;
 }
-export function FormProduct(props: any) {
+export function FormProduct(props: FormProduct) {
   //Theme
   const [darkMode] = useTheme();
 
@@ -206,7 +206,7 @@ export function FormProduct(props: any) {
         )}
       </label>
       <label htmlFor="inputImage">
-        image's URL:{" "}
+        Image's URL:{" "}
         <input
           type="url"
           name="image"
@@ -218,15 +218,19 @@ export function FormProduct(props: any) {
           }}
         />
       </label>
-      <button
-        disabled={!(!errorPrice && !errorDescription && !errorTitle)}
-        type="submit"
-        className={styles.btnRegister}
-      >
-        Confirm
-      </button>
-      {" or "}
-      <Link to="/products">Cancel</Link>
+      <section className={styles.containerButtons}>
+        <button
+          disabled={!(!errorPrice && !errorDescription && !errorTitle)}
+          type="submit"
+          className={styles.btnSubmit}
+        >
+          Confirm
+        </button>
+        {" or "}
+        <Link className={styles.btnCancel} to="/products">
+          Cancel
+        </Link>
+      </section>
     </form>
   );
 }

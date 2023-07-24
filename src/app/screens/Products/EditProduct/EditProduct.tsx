@@ -20,8 +20,10 @@ export function EditProduct() {
     const res = await fetch(API_PRODUCTS + `/${id}`);
     const json = await res.json();
     if (json.error == "Not Found") {
+      console.log(json)
       throw new Error(json);
     }
+    console.log(json)
     return json;
   }
 
@@ -61,6 +63,7 @@ export function EditProduct() {
         darkMode ? styles.darkMode : styles.lightMode,
       ].join(" ")}
     >
+      <h1>Edit product</h1>
       {productError ? (
         <ErrorComponent />
       ) : (
@@ -69,7 +72,7 @@ export function EditProduct() {
           {product && (
             <FormProduct
               onSubmit={updateProduct}
-              category={product}
+              product={product}
             ></FormProduct>
           )}
         </>

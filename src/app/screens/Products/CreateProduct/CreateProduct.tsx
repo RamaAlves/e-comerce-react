@@ -41,7 +41,8 @@ export function CreateProduct() {
         styles.main,
         darkMode ? styles.darkMode : styles.lightMode,
       ].join(" ")}
-    >
+    > 
+      <h1>Create product</h1>
       <FormProduct onSubmit={createProduct}></FormProduct>
     </main>
   );

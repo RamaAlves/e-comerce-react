@@ -17,6 +17,7 @@
     padding: $padding;
     min-width: 120px;
     max-width: 320px;
+    height: 46px;
     @include borderRadius;
     cursor:pointer;
 }

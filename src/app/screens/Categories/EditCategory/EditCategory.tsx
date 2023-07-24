@@ -58,6 +58,7 @@ export function EditCategory() {
         darkMode ? styles.darkMode : styles.lightMode,
       ].join(" ")}
     >
+      <h1>Edit category</h1>
       {categoryError ? (
         <ErrorComponent />
       ) : (

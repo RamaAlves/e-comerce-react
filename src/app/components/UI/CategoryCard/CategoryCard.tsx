@@ -52,7 +52,6 @@ export function CategoryCard({ category }: Category) {
     <Link to={`/products`} state={{ categoryId: category.id }}>
       <Card>
         <h1>{category.name}</h1>
-        <p>{category.id}</p>
         <img src={category.image} alt={`imagen de ${category.name}`} />
         {user?.role === "admin" && (
           <>

@@ -1,0 +1,95 @@
+@import "../../../../variables.scss";
+@import "../../../../mixins.scss";
+
+.darkMode {
+    background-color: $light-purple;
+
+    label {
+        input {
+            background-color: $dark-purple;
+        }
+
+        select {
+            background-color: $dark-purple;
+        }
+    }
+
+    .containerButtons {
+        font-size: $text;
+
+        .btnCancel {
+            color: $purple;
+        }
+    }
+}
+
+.lightMode {
+    background-color: $white;
+
+    label {
+        input {
+            background-color: $light-purple;
+            color: $dark-grey;
+        }
+
+
+        select {
+            background-color: $light-purple;
+            color: $dark-grey;
+        }
+    }
+
+    .containerButtons {
+
+        .btnCancel {
+            color: $purple;
+        }
+    }
+
+}
+
+.form {
+    height: fit-content;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $gap;
+    padding: $padding;
+    border-radius: $border-radius;
+
+    label {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            width: 260px;
+            height: 32px;
+            padding-left: $padding;
+            padding-right: $padding;
+            border: none;
+        }
+
+        small {
+            font-size: $aux-text;
+            color: $red;
+        }
+
+    }
+
+    .containerButtons {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+
+        .btnSubmit {
+            @include formatButtonPurple
+        }
+
+        .btnCancel {
+            text-decoration: none;
+
+        }
+
+    }
+}

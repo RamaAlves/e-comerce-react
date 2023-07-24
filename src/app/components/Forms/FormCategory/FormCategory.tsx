@@ -2,13 +2,16 @@ import { useState } from "react";
 import { useTheme } from "../../../hooks/useTheme";
 import styles from "./FormCategory.module.scss";
 import { Link } from "react-router-dom";
-import { CategorySchema, CategorySchemaCreate } from "../../../interfaces/interfaces";
+import {
+  CategorySchema,
+  CategorySchemaCreate,
+} from "../../../interfaces/interfaces";
 import { RANDOM_IMAGE } from "../../../constants/generalConstants";
 /* import { MutationFunction } from "react-query/types/core/types"; */
 
-interface FormCategory{
-    onSubmit: any
-    category?: CategorySchema 
+interface FormCategory {
+  onSubmit: any;
+  category?: CategorySchema;
 }
 
 export function FormCategory(props: FormCategory) {
@@ -51,7 +54,7 @@ export function FormCategory(props: FormCategory) {
       onSubmit={handleSubmit}
     >
       <label htmlFor="inputName">
-        name:{" "}
+        Name:{" "}
         <input
           type="text"
           name="name"
@@ -75,7 +78,7 @@ export function FormCategory(props: FormCategory) {
         </small>
       </label>
       <label htmlFor="inputImage">
-        image's URL:{" "}
+        Image's URL:{" "}
         <input
           type="url"
           name="image"
@@ -87,11 +90,17 @@ export function FormCategory(props: FormCategory) {
           }}
         />
       </label>
-      <button disabled={errorName} type="submit" className={styles.btnRegister}>
-        Confirm
-      </button>
-      {" or "}
-      <Link to="/categories">Cancel</Link>
+      <section className={styles.containerButtons}>
+        <button
+          disabled={errorName}
+          type="submit"
+          className={styles.btnSubmit}
+        >
+          Confirm
+        </button>
+        {" or "}
+        <Link className={styles.btnCancel} to="/categories">Cancel</Link>
+      </section>
     </form>
   );
 }

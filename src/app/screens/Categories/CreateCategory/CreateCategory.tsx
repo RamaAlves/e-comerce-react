@@ -41,6 +41,7 @@ export function CreateCategory() {
         darkMode ? styles.darkMode : styles.lightMode,
       ].join(" ")}
     >
+      <h1>Create category</h1>
       <FormCategory onSubmit={createCategory} ></FormCategory>
     </main>
   );
