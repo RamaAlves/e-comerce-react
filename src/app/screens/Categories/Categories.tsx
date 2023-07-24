@@ -33,13 +33,6 @@ export function Categories() {
         darkMode ? styles.darkMode : styles.lightMode,
       ].join(" ")}
     >
-      {user?.role === "admin" && (
-        <section className={styles.containerAdminOptions}>
-          <Link className={styles.buttonCreate} to="/categories/create">
-            Create Category
-          </Link>
-        </section>
-      )}
       {error ? (
         <ErrorComponent />
       ) : (
@@ -52,6 +45,13 @@ export function Categories() {
                 return <CategoryCard key={category.id} category={category} />;
               })}
           </section>
+          {user?.role === "admin" && (
+            <section className={styles.containerAdminOptions}>
+              <Link className={styles.buttonCreate} to="/categories/create">
+                Create Category
+              </Link>
+            </section>
+          )}
         </>
       )}
     </main>

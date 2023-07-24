@@ -35,8 +35,17 @@
     .title{
         font-size: $title;
     }
+    .containerAdminOptions{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .buttonCreate{
+            @include formatButtonPurple;
+            text-decoration: none;
+        }
+    }
     .containerCategories {
-        border-radius: $border-radius;
         max-height: 100%;
         width: 100%;
         display: flex;
