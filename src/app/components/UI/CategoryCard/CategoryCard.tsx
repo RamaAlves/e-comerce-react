@@ -7,6 +7,9 @@ import { Button } from "../Button/Button";
 import styles from "./CategoryCard.module.scss";
 import { useMutation } from "react-query";
 import { API_CATEGORIES } from "../../../constants/urlsAPI";
+import { useState } from "react";
+import { Modal } from "../../Modal/Modal";
+import { createPortal } from "react-dom";
 
 type Category = {
   category: CategorySchema;
@@ -14,6 +17,9 @@ type Category = {
 export function CategoryCard({ category }: Category) {
   const { user } = useUser();
   const navigate = useNavigate();
+  const [showModalDelete, setShowModalDelete] = useState<boolean>(false);
+
+  const MODAL_MESSAGE = "Are you sure delete this category?";
 
   const deleteCategory = useMutation(
     async () => {
@@ -42,11 +48,6 @@ export function CategoryCard({ category }: Category) {
     deleteCategory.mutate();
   }
 
-  function handleDeleteCategory() {
-    console.log("abrir modal");
-    handleConfirmDelete();
-  }
-
   return (
     <Link to={`/products`} state={{ categoryId: category.id }}>
       <Card>
@@ -59,13 +60,32 @@ export function CategoryCard({ category }: Category) {
               <Link to={`/categories/edit/${category.id}`}>
                 <Button purple={false}>Edit category 🖋</Button>
               </Link>
-              <a className={styles.delete} onClick={handleDeleteCategory}>
+              <a
+                className={styles.delete}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowModalDelete(true);
+                }}
+              >
                 Delete
               </a>
             </ContainerButtons>
           </>
         )}
       </Card>
+      {showModalDelete &&
+        createPortal(
+          <Modal
+            content={MODAL_MESSAGE}
+            onConfirm={handleConfirmDelete}
+            onCancel={(e:React.FormEvent<HTMLFormElement>) => {
+              e.preventDefault();
+              setShowModalDelete(false);
+            }}
+          />,
+          document.getElementById("portal") as HTMLElement,
+          "modal-delete"
+        )}
     </Link>
   );
 }

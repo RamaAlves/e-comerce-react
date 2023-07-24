@@ -10,12 +10,18 @@ import { Carrousel } from "../../../components/Carrousel/Carrousel";
 import { useUser } from "../../../hooks/useUser";
 import { ContainerButtons } from "../../../components/UI/ContainerButtons/ContainerButtons";
 import { Button } from "../../../components/UI/Button/Button";
+import { useState } from "react";
+import { createPortal } from "react-dom";
+import { Modal } from "../../../components/Modal/Modal";
 
 export function ProductDetails() {
   const [darkMode] = useTheme();
   const { id } = useParams();
   const { user } = useUser();
   const navigate = useNavigate();
+  const [showModalDelete, setShowModalDelete] = useState<boolean>(false);
+
+  const MODAL_MESSAGE = "Are youy sure delete this product?";
 
   async function fetchProducts() {
     const res = await fetch(API_PRODUCTS + `/${id}`);
@@ -37,11 +43,6 @@ export function ProductDetails() {
     deleteProduct.mutate();
   }
 
-  function handleDeleteProduct() {
-    console.log("abrir modal");
-    handleConfirmDelete();
-  }
-
   const deleteProduct = useMutation(
     async () => {
       const res = await fetch(API_PRODUCTS + `/${id}`, { method: "DELETE" });
@@ -60,6 +61,7 @@ export function ProductDetails() {
       },
     }
   );
+  
   return (
     <main
       className={[
@@ -83,7 +85,9 @@ export function ProductDetails() {
                     </Link>
                     <a
                       className={styles.delete}
-                      onClick={handleDeleteProduct}
+                      onClick={() => {
+                        setShowModalDelete(true);
+                      }}
                     >
                       Delete
                     </a>
@@ -93,6 +97,16 @@ export function ProductDetails() {
                 <h3>Category: {product.category.name}</h3>
                 <p>{product.description}</p>
                 <h4>Price: ${product.price}</h4>
+                {showModalDelete &&
+                  createPortal(
+                    <Modal
+                      content={MODAL_MESSAGE}
+                      onConfirm={handleConfirmDelete}
+                      onCancel={() => { setShowModalDelete(false) }}
+                    />,
+                    document.getElementById("portal") as HTMLElement,
+                    "modal-delete"
+                  )}
               </>
             )}
           </>
