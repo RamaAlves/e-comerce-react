@@ -14,32 +14,50 @@ export interface CategorySchemaCreate {
 }
 
 export interface ProductSchema {
-  id: number,
-  title: string,
-  price: number,
-  description: string,
+  id: number;
+  title: string;
+  price: number;
+  description: string;
   category: {
-    id: number,
-    name: string,
-    image: string
-  },
-  images: string[]
+    id: number;
+    name: string;
+    image: string;
+  };
+  images: string[];
 }
 export interface ProductSchemaCreate {
-  title: string,
-  price: number,
-  description: string,
-  categoryId: number,
-  images: string[]
+  title: string;
+  price: number;
+  description: string;
+  categoryId: number;
+  images: string[];
 }
-
-export interface  ChildrenType {
-    children: React.ReactNode
+export interface CartProductSchema {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: {
+    id: number;
+    name: string;
+    image: string;
+  };
+  images: string[];
+  quantity: number;
+}
+export interface CardProductCartProps {
+  product: any;
+  onSubstract: Function;
+  onAdd: Function;
+  onRemove: Function;
+}
+export interface ChildrenType {
+  children: React.ReactNode;
 }
 
 export interface ButtonType {
-  children: React.ReactNode,
-  purple: boolean
+  children: React.ReactNode;
+  purple: boolean;
 }
 
 export interface UserLoginData {
@@ -51,18 +69,18 @@ export interface UserLoginDataResponse {
   access_token: string;
 }
 
-export interface CreateUserData{	
+export interface CreateUserData {
   name: string;
-  email: string;	
-  password: string;	
+  email: string;
+  password: string;
   avatar: string;
 }
-export interface UserDataResponse{
-  id:	number;	
+export interface UserDataResponse {
+  id: number;
   name: string;
   role: string;
-  email: string;	
-  password: string;	
+  email: string;
+  password: string;
   avatar: string;
 }
 

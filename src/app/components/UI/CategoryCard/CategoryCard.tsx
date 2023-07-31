@@ -8,7 +8,7 @@ import styles from "./CategoryCard.module.scss";
 import { useMutation } from "react-query";
 import { API_CATEGORIES } from "../../../constants/urlsAPI";
 import { useState } from "react";
-import { Modal } from "../../Modal/Modal";
+import { ModalDelete } from "../../Modal/ModalDelete/ModalDelete";
 import { createPortal } from "react-dom";
 
 type Category = {
@@ -74,7 +74,7 @@ export function CategoryCard({ category }: Category) {
       </Card>
       {showModalDelete &&
         createPortal(
-          <Modal
+          <ModalDelete
             content={MODAL_MESSAGE}
             onConfirm={handleConfirmDelete}
             onCancel={(e: React.MouseEvent<HTMLElement>):void => {

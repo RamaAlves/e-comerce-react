@@ -1,0 +1,123 @@
+.darkMode {
+  border: 1px solid #4c4a4a;
+  box-shadow: 0px 0px 6px #4c4a4a;
+  background-color: #292929;
+}
+.darkMode img {
+  border: 1px solid #4c4a4a;
+}
+.darkMode .containerInfo .title {
+  color: #cfcece;
+}
+.darkMode .containerInfo .description {
+  color: #cfcece;
+}
+.darkMode .containerInfo .price p {
+  color: #ece7e7;
+}
+.darkMode .containerInfo .price .quantity button {
+  background-color: #e9d4ff;
+  color: #4b0d89;
+}
+.darkMode .containerInfo .price .quantity button:hover {
+  background-color: #4b0d89;
+  color: #ece7e7;
+}
+.darkMode .containerInfo .price .quantity p {
+  border: 1px solid #e9d4ff;
+}
+.lightMode {
+  border: 1px solid #cfcece;
+  box-shadow: 0px 0px 8px #cfcece;
+  background-color: #ece7e7;
+}
+.lightMode img {
+  border: 1px solid #cfcece;
+}
+.lightMode .containerInfo .title {
+  color: #141414;
+}
+.lightMode .containerInfo .description {
+  color: #141414;
+}
+.lightMode .containerInfo .price .quantity button {
+  background-color: #4b0d89;
+  color: #ece7e7;
+}
+.lightMode .containerInfo .price .quantity button:hover {
+  background-color: #33085f;
+  color: #ece7e7;
+}
+.lightMode .containerInfo .price .quantity p {
+  border: 1px solid #4b0d89;
+}
+.container {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 320px;
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+}
+.container img {
+  height: 80%;
+  align-self: center;
+}
+.container .containerInfo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 12px;
+  justify-content: space-around;
+  align-items: center;
+}
+.container .containerInfo .title {
+  align-self: flex-start;
+}
+.container .containerInfo .description {
+  display: none;
+}
+.container .containerInfo .price {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .containerInfo .price p {
+  max-width: 80px;
+  overflow: auto;
+}
+.container .containerInfo .price .quantity {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  padding: 0;
+}
+.container .containerInfo .price .quantity button {
+  border: none;
+  margin: 0;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  font-size: 26px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.container .containerInfo .price .quantity p {
+  padding: 0;
+  width: 30px;
+  max-width: 30px;
+  text-align: center;
+  height: 100%;
+  line-height: 1.8;
+}
+.container button {
+  cursor: pointer;
+  align-self: flex-start;
+  background-color: transparent;
+  border: none;
+}/*# sourceMappingURL=CardProductCart.module.css.map */

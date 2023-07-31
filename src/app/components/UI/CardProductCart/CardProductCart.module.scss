@@ -1,0 +1,146 @@
+@import "../../../../variables.scss";
+@import "../../../../mixins.scss";
+
+.darkMode{
+    @include borderDark;
+    @include shadowDark;
+    background-color: $dark-grey;
+    
+    img {
+        @include borderDark;
+    }
+    
+    .containerInfo {    
+        .title{
+            color: $light-grey;
+        }
+        .description {
+            color: $light-grey;
+        }
+        .price {
+            p {
+                color:$white;
+            }
+            .quantity {
+                button {
+                    background-color: $light-purple;
+                    color:$purple;
+                    &:hover{
+                        background-color: $purple;
+                        color:$white;
+                    }
+                }
+                p {
+                    border: 1px solid $light-purple;
+                }
+            }
+        }
+    }
+    button {
+    }
+}
+.lightMode{
+    @include borderLight;
+    @include shadowLight;
+    background-color: $white;
+    img {
+        @include borderLight;
+    }
+    
+    .containerInfo {    
+        .title {
+            color: $black;
+        }
+        .description {
+            color: $black;
+        }
+        .price {
+            p {
+            }
+            .quantity {
+                button {
+                    background-color: $purple;
+                    color: $white;
+                    &:hover{
+                        background-color: $dark-purple;
+                        color:$white;
+                    }
+                }
+                p {
+                    border: 1px solid $purple;
+                }
+            }
+        }
+    }
+    button {
+    }
+}
+.container{
+    @include formatCard;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $padding;
+    img{
+        height: 80%;
+        align-self: center;
+    }
+    .containerInfo{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        padding: $padding;
+        justify-content: space-around;
+        align-items: center;
+        .title{
+            align-self: flex-start ;
+        }
+        .description{
+            display: none;
+        }
+        .price{
+            width: 100%;
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            p{
+                max-width: 80px;
+                overflow: auto;
+            }
+            .quantity{
+                display:flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+                height: 30px;
+                padding:0;
+                button{
+                    border: none;
+                    margin: 0;
+                    height: 30px;
+                    width: 30px;
+                    cursor: pointer;
+                    font-size: $button;
+                    transition: background-color .2s ease, color .2s ease;
+                }
+                p{
+                    padding: 0;
+                    width: 30px;
+                    max-width: 30px;
+                    text-align: center;
+                    height: 100%;
+                    line-height: 1.8;
+                }
+            }
+        }
+
+    }
+    button{
+        cursor: pointer;
+        align-self: flex-start;
+        background-color: transparent;
+        border: none;
+    }
+}

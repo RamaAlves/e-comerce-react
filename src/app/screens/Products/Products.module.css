@@ -1,20 +1,20 @@
 .darkMode {
   background-color: #292929;
+  /* .containerProducts {
+     background-color: $grey;
+  } */
 }
 .darkMode .containerFilter {
   background-color: #cfcece;
 }
-.darkMode .containerProducts {
-  background-color: #4c4a4a;
-}
 
 .lightMode {
   background-color: #ece7e7;
+  /* .containerProducts {
+      background-color: $light-grey;
+  } */
 }
 .lightMode .containerFilter {
-  background-color: #cfcece;
-}
-.lightMode .containerProducts {
   background-color: #cfcece;
 }
 

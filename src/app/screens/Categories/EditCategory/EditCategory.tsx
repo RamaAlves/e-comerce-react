@@ -11,7 +11,7 @@ import { Loader } from "../../../components/UI/Loader/Loader";
 import { ErrorComponent } from "../../../components/Error/ErrorComponent";
 
 export function EditCategory() {
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
   const { id } = useParams();
   const navigate = useNavigate();
 

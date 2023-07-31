@@ -12,7 +12,7 @@ import { ContainerButtons } from "../../../components/UI/ContainerButtons/Contai
 import { Button } from "../../../components/UI/Button/Button";
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import { Modal } from "../../../components/Modal/Modal";
+import { ModalDelete } from "../../../components/Modal/ModalDelete/ModalDelete";
 
 export function ProductDetails() {
   const {darkMode} = useTheme();
@@ -99,7 +99,7 @@ export function ProductDetails() {
                 <h4>Price: ${product.price}</h4>
                 {showModalDelete &&
                   createPortal(
-                    <Modal
+                    <ModalDelete
                       content={MODAL_MESSAGE}
                       onConfirm={handleConfirmDelete}
                       onCancel={() => { setShowModalDelete(false) }}
