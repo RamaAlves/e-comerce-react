@@ -3,11 +3,12 @@ import {
   ChildrenType,
   ProductSchema,
   CartProductSchema,
+  CartContextType,
 } from "../interfaces/interfaces";
 import { useUser } from "../hooks/useUser";
 import { CART_ITEMS } from "../constants/localStorageConstants";
 
-export const CartContext = React.createContext<any>(null!);
+export const CartContext = React.createContext<CartContextType>(null!);
 
 export function CartProvider({ children }: ChildrenType) {
   //states

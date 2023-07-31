@@ -93,5 +93,18 @@ export interface AuthContextType {
 }
 export interface UserContextType {
   user: UserDataResponse | null;
-  updateUser: (accessToken: UserLoginDataResponse) => void;
+  updateUser: (userData: UserDataResponse | null) => void;
+}
+
+export interface ThemeContextType {
+  darkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface CartContextType {
+  items: CartProductSchema[];
+  addItem: (item: ProductSchema) => void;
+  substractItem: (id: number) => void;
+  removeItem: (id: number) => void;
+  total: number;
 }

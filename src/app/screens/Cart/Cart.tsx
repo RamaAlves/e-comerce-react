@@ -8,7 +8,6 @@ export function Cart() {
   const { items, addItem, substractItem, removeItem, total } = useCart();
   const { darkMode } = useTheme();
 
-  console.log(items);
   return (
     <main
       className={[
