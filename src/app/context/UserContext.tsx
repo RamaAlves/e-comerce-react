@@ -5,7 +5,13 @@ import { useQuery } from "react-query";
 import { QUERY_KEY_USER_AUTH } from "../constants/queryConstants";
 import { API_AUTH } from "../constants/urlsAPI"; */
 
-export const UserContext = createContext<any>(null!);
+type UserContextType = {
+  user: UserDataResponse | null;
+  updateUser: (userData:UserDataResponse|null) =>void;
+};
+
+
+export const UserContext = createContext<UserContextType>(null!);
 
 export function UserProvider({ children }: ChildrenType) {
   const [user, setUser] = useState<UserDataResponse | null>(null);
@@ -24,7 +30,7 @@ export function UserProvider({ children }: ChildrenType) {
     error: userDataError,
   } = useQuery([QUERY_KEY_USER_AUTH, auth.accessToken], fetchUserAuth); */
 
-  const updateUser = (userData:UserDataResponse) => {
+  const updateUser = (userData:UserDataResponse|null) => {
     setUser(userData);
   };
 
