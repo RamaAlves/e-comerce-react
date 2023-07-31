@@ -1,0 +1,32 @@
+.darkMode .notification {
+  background-color: #e9d4ff;
+}
+.darkMode .notification p {
+  color: #33085f;
+}
+
+.lightMode .notification {
+  background-color: #4b0d89;
+}
+.lightMode .notification p {
+  color: #ece7e7;
+}
+
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: end;
+  align-items: flex-start;
+}
+.container .notification {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 320px;
+  width: 50%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=NotificationAddItem.module.css.map */
