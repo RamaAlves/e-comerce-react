@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ChildrenType,
   ProductSchema,
   CartProductSchema,
 } from "../interfaces/interfaces";
+import { useUser } from "../hooks/useUser";
+import { CART_ITEMS } from "../constants/localStorageConstants";
 
 export const CartContext = React.createContext<any>(null!);
 
@@ -13,6 +15,19 @@ export function CartProvider({ children }: ChildrenType) {
   const [items, setItems] = useState<CartProductSchema[]>([]);
   //Total price state
   const [total, setTotal] = useState<number>(0);
+
+  //context user
+  const { user } = useUser();
+
+  //restore cart
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem(CART_ITEMS + user?.name)!);
+    if (items) {
+      setItems(items);
+      //set total price of update items
+      updateTotal(items);
+    }
+  }, [user]);
 
   //add quantity of a product
   function addItem(item: ProductSchema) {
@@ -33,6 +48,8 @@ export function CartProvider({ children }: ChildrenType) {
       let newItem = { ...item, quantity: 1 };
       updateItems = [...items, newItem];
     }
+    //save cart in local storage
+    localStorage.setItem(CART_ITEMS + user?.name, JSON.stringify(updateItems));
     //set total price of update items
     updateTotal(updateItems);
     //set items in the cart
@@ -63,6 +80,11 @@ export function CartProvider({ children }: ChildrenType) {
         removeItem(productFound.id);
       }
     } else {
+      //save cart in local storage
+      localStorage.setItem(
+        CART_ITEMS + user?.name,
+        JSON.stringify(updateItems)
+      );
       //set total price of update items
       updateTotal(updateItems);
       //set items in the cart
@@ -70,7 +92,7 @@ export function CartProvider({ children }: ChildrenType) {
     }
   }
 
-  //Delete an Item 
+  //Delete an Item
   function removeItem(id: number) {
     //Identify index of item to delete
     const index = items.findIndex((item: CartProductSchema) => item.id === id);
@@ -78,6 +100,8 @@ export function CartProvider({ children }: ChildrenType) {
     const updateItems = items.slice();
     //remove item for index
     updateItems.splice(index, 1);
+    //save cart in local storage
+    localStorage.setItem(CART_ITEMS + user?.name, JSON.stringify(updateItems));
     //set total price of update items
     updateTotal(updateItems);
     //set items in the cart
