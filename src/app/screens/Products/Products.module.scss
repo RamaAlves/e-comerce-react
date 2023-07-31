@@ -29,6 +29,13 @@
     justify-content: space-around;
     height: calc(100% - 80px);
     padding: $padding;
+    .containerAdminOptions{
+        @include formatCard;
+        .buttonCreate{
+            text-decoration: none;
+            @include formatButtonPurple
+        }
+    }
     .containerFilter{
         height: 10%;
     }

@@ -1,0 +1,28 @@
+@import "../../../../variables.scss";
+
+.darkMode {
+    background-color: $dark-grey;
+    h1{
+        color:$light-purple;
+    }
+}
+
+.lightMode {
+    background-color: $light-purple;
+    h1{
+        color:$dark-purple;
+    }
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    transition: background-color .2s ease;
+    h1{
+        font-size: $title;
+        margin:0;
+        transition: color .2s ease;
+    }
+}

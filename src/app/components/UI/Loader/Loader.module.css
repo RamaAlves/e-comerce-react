@@ -3,7 +3,7 @@
   display: inline-block;
   min-width: 180px;
   min-height: 180px;
-  background-color: #d9b4ff;
+  background-color: #e9d4ff;
   transform: rotate(45deg) scale(75%);
   -webkit-clip-path: polygon(0% 0%, 0% 100%, 18px 100%, 18px 18px, 162px 18px, 162px 162px, 18px 162px, 18px 100%, 100% 100%, 100% 0%);
           clip-path: polygon(0% 0%, 0% 100%, 18px 100%, 18px 18px, 162px 18px, 162px 162px, 18px 162px, 18px 100%, 100% 100%, 100% 0%);

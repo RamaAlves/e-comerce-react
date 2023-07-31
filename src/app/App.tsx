@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Layout } from "./components/Layout/Layout";
 import { Home } from "./screens/Home/Home";
-import { ProductDetails } from "./screens/Products/ProductDetails/ProductsDetails";
+import { ProductDetails } from "./screens/Products/ProductDetails/ProductDetails";
 import { Categories } from "./screens/Categories/Categories";
 import { Products } from "./screens/Products/Products";
 import { CreateProduct } from "./screens/Products/CreateProduct/CreateProduct";
@@ -18,7 +18,10 @@ import { ErrorLogin } from "./screens/Auth/ErrorLogin/ErrorLogin";
 import { UserProvider } from "./context/UserContext";
 import { RegisterSuccess } from "./screens/Auth/RegisterSuccess/RegisterSuccess";
 import { RedirectAuth } from "./components/RedirectAuth/RedirectAuth";
-import { RequireAuth } from "./components/RequiereAuth/RequireAuth";
+import { RequireAuth } from "./components/RequireAuth/RequireAuth";
+import { RequireAdmin } from "./components/RequireAdmin/RequireAdmin";
+import { CreateCategory } from "./screens/Categories/CreateCategory/CreateCategory";
+import { EditCategory } from "./screens/Categories/EditCategory/EditCategory";
 
 const queryClient = new QueryClient();
 
@@ -33,25 +36,48 @@ function App() {
                 <Route element={<Layout />}>
                   <Route path="/" element={<Home />} />
                   <Route path="/categories" element={<Categories />} />
+                  <Route
+                    path="/categories/edit/:id"
+                    element={
+                      <RequireAdmin>
+                        <EditCategory />
+                      </RequireAdmin>
+                    }
+                  />
+                  <Route
+                    path="/categories/create"
+                    element={
+                      <RequireAdmin>
+                        <CreateCategory />
+                      </RequireAdmin>
+                    }
+                  />
                   <Route path="/products" element={<Products />} />
                   <Route path="/products/:id" element={<ProductDetails />} />
                   <Route
                     path="/products/create"
                     element={
-                      <RequireAuth>
+                      <RequireAdmin>
                         <CreateProduct />
-                      </RequireAuth>
+                      </RequireAdmin>
                     }
                   />
                   <Route
                     path="/products/edit/:id"
                     element={
-                      <RequireAuth>
+                      <RequireAdmin>
                         <EditProduct />
+                      </RequireAdmin>
+                    }
+                  />
+                  <Route
+                    path="/cart-detail"
+                    element={
+                      <RequireAuth>
+                        <Cart />
                       </RequireAuth>
                     }
                   />
-                  <Route path="/cart-detail" element={<Cart />} />
                   <Route
                     path="/login"
                     element={

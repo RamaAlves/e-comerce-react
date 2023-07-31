@@ -1,0 +1,1 @@
+export const RANDOM_IMAGE = "https://picsum.photos/640/640?r=1239"

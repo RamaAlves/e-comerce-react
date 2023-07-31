@@ -21,10 +21,10 @@
   background-color: #33085f;
 }
 .darkMode .containerMenuMobile .buttonMenuActive span::after {
-  background-color: #d9b4ff;
+  background-color: #e9d4ff;
 }
 .darkMode .containerMenuMobile .buttonMenuActive span::before {
-  background-color: #d9b4ff;
+  background-color: #e9d4ff;
 }
 .darkMode .navbarMobile {
   background-color: #cfcece;
@@ -71,7 +71,7 @@
   background-color: #141414;
 }
 .lightMode .containerMenuMobile .buttonMenuActive {
-  background-color: #d9b4ff;
+  background-color: #e9d4ff;
 }
 .lightMode .containerMenuMobile .buttonMenuActive span::after {
   background-color: #4b0d89;

@@ -1,0 +1,9 @@
+@import '../../../../variables.scss';
+@import '../../../../mixins.scss';
+
+.delete {
+    @include formatButtonPurple;
+}
+a{
+    text-decoration:none;
+}

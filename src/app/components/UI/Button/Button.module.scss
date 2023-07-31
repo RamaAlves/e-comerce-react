@@ -2,8 +2,10 @@
 @import '../../../../mixins.scss' ;
 .button {
     @include formatButton;
+    text-decoration: none;
 }
 
 .purple {
     @include formatButtonPurple;
+    text-decoration: none;
 }
