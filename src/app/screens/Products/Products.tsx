@@ -15,7 +15,7 @@ import { ProductCard } from "../../components/UI/ProductCard/ProductCard";
 import { useUser } from "../../hooks/useUser";
 
 export function Products() {
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
   const { state } = useLocation();
   const { user } = useUser();
   const [urlQuery, setUrlQuery] = useState(

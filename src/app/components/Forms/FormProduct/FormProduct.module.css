@@ -1,21 +1,55 @@
+.darkMode {
+  background-color: #e9d4ff;
+}
+.darkMode label input {
+  background-color: #33085f;
+}
+.darkMode label select {
+  background-color: #33085f;
+}
+.darkMode .containerButtons {
+  font-size: 16px;
+}
+.darkMode .containerButtons .btnCancel {
+  color: #4b0d89;
+}
+
+.lightMode {
+  background-color: #ece7e7;
+}
+.lightMode label input {
+  background-color: #e9d4ff;
+  color: #292929;
+}
+.lightMode label select {
+  background-color: #e9d4ff;
+  color: #292929;
+}
+.lightMode .containerButtons .btnCancel {
+  color: #4b0d89;
+}
+
 .form {
-  height: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  padding: 12px;
+  border-radius: 0.375rem;
 }
 .form label {
   display: flex;
   flex-direction: column;
-  padding: 12px;
 }
 .form label input {
   width: 260px;
   height: 32px;
   padding-left: 12px;
   padding-right: 12px;
+  border: none;
 }
 .form label small {
   font-size: 12px;
@@ -30,7 +64,7 @@
   display: flex;
   flex-direction: column;
 }
-.form .containerButtons .btnRegister {
+.form .containerButtons .btnSubmit {
   border: 1px solid #4b0d89;
   font-size: 16px;
   background-color: #ece7e7;
@@ -45,15 +79,5 @@
   color: #e9d4ff;
 }
 .form .containerButtons .btnCancel {
-  border: 1px solid #4b0d89;
-  font-size: 16px;
-  background-color: #ece7e7;
-  color: #4b0d89;
-  padding: 12px;
-  min-width: 120px;
-  max-width: 320px;
-  height: 46px;
-  border-radius: 0.375rem;
-  cursor: pointer;
   text-decoration: none;
 }/*# sourceMappingURL=FormProduct.module.css.map */

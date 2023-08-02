@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"EditProduct.module.css"}
+{"version":3,"sources":["EditProduct.module.scss","../../../../variables.scss","EditProduct.module.css"],"names":[],"mappings":"AAEA;EACI,yBCEO;ACHX;AFEI;EACI,cCIM;ACJd;;AFIA;EACI,yBCDU;ACAd;AFEI;EACI,cCDK;ACCb;;AFIA;EACI,YAAA;EACA,WAAA;EACA,aAAA;EACA,mBAAA;EACA,sCAAA;AEDJ;AFEI;EACI,eCDD;EDEC,SAAA;EACA,2BAAA;AEAR","file":"EditProduct.module.css"}

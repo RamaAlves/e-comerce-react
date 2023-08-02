@@ -1,0 +1,63 @@
+@import "../../../../../variables.scss";
+@import "../../../../../mixins.scss";
+
+.darkMode {
+    .notification{
+        background-color: $light-purple;
+        p{
+            color:$dark-purple;
+        }
+    }
+}
+
+.lightMode {
+    .notification{
+        background-color: $purple;
+        p{
+            color:$white;
+        }
+    }
+}
+
+.container {
+    position: absolute;
+    top: 80px;
+    width: 100vw;
+    display:flex;
+    justify-content: flex-end;
+    align-items: end;
+    pointer-events:painted;
+    overflow: hidden;
+    .notification{
+        @include formatCard;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: .5s ease-in 0s 1 show, .5s ease-out 1.5s 1 hide;
+        p{
+            text-align: center;
+            font-size: $text;
+        }
+    }
+}
+
+@keyframes show {
+    0%{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes hide{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+}

@@ -7,7 +7,7 @@ import { ProductSchemaCreate } from "../../../interfaces/interfaces";
 import { FormProduct } from "../../../components/Forms/FormProduct/FormProduct";
 export function CreateProduct() {
   //Theme
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
 
   const navigate = useNavigate();
 

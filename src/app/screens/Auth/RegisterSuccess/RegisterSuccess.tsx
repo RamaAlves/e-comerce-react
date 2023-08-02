@@ -3,7 +3,7 @@ import { useTheme } from "../../../hooks/useTheme";
 import styles from "./RegisterSuccess.module.scss";
 import { useEffect, useState } from "react";
 export function RegisterSuccess() {
-  const [darkMode] = useTheme();
+  const {darkMode} = useTheme();
   const [count, setCount] = useState<number>(5);
   const navigate = useNavigate();
   const { state } = useLocation();

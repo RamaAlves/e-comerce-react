@@ -1,14 +1,14 @@
-import { useTheme } from "../../hooks/useTheme";
-import styles from "./Modal.module.scss";
+import { useTheme } from "../../../hooks/useTheme";
+import styles from "./ModalDelete.module.scss";
 
-interface Modal {
+interface ModalDeleteProps {
   content: string;
   onConfirm?: (() => {}) | (() => void);
   onCancel?: (() => {}) | ((e: React.MouseEvent<HTMLElement>) => void);
 }
 
-export function Modal(props: Modal) {
-  const [darkMode] = useTheme();
+export function ModalDelete(props: ModalDeleteProps) {
+  const {darkMode} = useTheme();
   return (
     <div
       className={[

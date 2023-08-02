@@ -22,6 +22,7 @@ import { RequireAuth } from "./components/RequireAuth/RequireAuth";
 import { RequireAdmin } from "./components/RequireAdmin/RequireAdmin";
 import { CreateCategory } from "./screens/Categories/CreateCategory/CreateCategory";
 import { EditCategory } from "./screens/Categories/EditCategory/EditCategory";
+import { CartProvider } from "./context/CartContext";
 
 const queryClient = new QueryClient();
 
@@ -32,75 +33,77 @@ function App() {
         <ThemeProvider>
           <UserProvider>
             <AuthProvider>
-              <Routes>
-                <Route element={<Layout />}>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/categories" element={<Categories />} />
-                  <Route
-                    path="/categories/edit/:id"
-                    element={
-                      <RequireAdmin>
-                        <EditCategory />
-                      </RequireAdmin>
-                    }
-                  />
-                  <Route
-                    path="/categories/create"
-                    element={
-                      <RequireAdmin>
-                        <CreateCategory />
-                      </RequireAdmin>
-                    }
-                  />
-                  <Route path="/products" element={<Products />} />
-                  <Route path="/products/:id" element={<ProductDetails />} />
-                  <Route
-                    path="/products/create"
-                    element={
-                      <RequireAdmin>
-                        <CreateProduct />
-                      </RequireAdmin>
-                    }
-                  />
-                  <Route
-                    path="/products/edit/:id"
-                    element={
-                      <RequireAdmin>
-                        <EditProduct />
-                      </RequireAdmin>
-                    }
-                  />
-                  <Route
-                    path="/cart-detail"
-                    element={
-                      <RequireAuth>
-                        <Cart />
-                      </RequireAuth>
-                    }
-                  />
-                  <Route
-                    path="/login"
-                    element={
-                      <RedirectAuth>
-                        <Login />
-                      </RedirectAuth>
-                    }
-                  />
-                  <Route
-                    path="/register"
-                    element={
-                      <RedirectAuth>
-                        <Register />
-                      </RedirectAuth>
-                    }
-                  />
-                  <Route path="/error/login" element={<ErrorLogin />} />
-                  <Route
-                    path="/register/success"
-                    element={<RegisterSuccess />}
-                  />
-                </Route>
-              </Routes>
+              <CartProvider>
+                <Routes>
+                  <Route element={<Layout />}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/categories" element={<Categories />} />
+                    <Route
+                      path="/categories/edit/:id"
+                      element={
+                        <RequireAdmin>
+                          <EditCategory />
+                        </RequireAdmin>
+                      }
+                    />
+                    <Route
+                      path="/categories/create"
+                      element={
+                        <RequireAdmin>
+                          <CreateCategory />
+                        </RequireAdmin>
+                      }
+                    />
+                    <Route path="/products" element={<Products />} />
+                    <Route path="/products/:id" element={<ProductDetails />} />
+                    <Route
+                      path="/products/create"
+                      element={
+                        <RequireAdmin>
+                          <CreateProduct />
+                        </RequireAdmin>
+                      }
+                    />
+                    <Route
+                      path="/products/edit/:id"
+                      element={
+                        <RequireAdmin>
+                          <EditProduct />
+                        </RequireAdmin>
+                      }
+                    />
+                    <Route
+                      path="/cart-detail"
+                      element={
+                        <RequireAuth>
+                          <Cart />
+                        </RequireAuth>
+                      }
+                    />
+                    <Route
+                      path="/login"
+                      element={
+                        <RedirectAuth>
+                          <Login />
+                        </RedirectAuth>
+                      }
+                    />
+                    <Route
+                      path="/register"
+                      element={
+                        <RedirectAuth>
+                          <Register />
+                        </RedirectAuth>
+                      }
+                    />
+                    <Route path="/error/login" element={<ErrorLogin />} />
+                    <Route
+                      path="/register/success"
+                      element={<RegisterSuccess />}
+                    />
+                  </Route>
+                </Routes>
+              </CartProvider>
             </AuthProvider>
           </UserProvider>
         </ThemeProvider>

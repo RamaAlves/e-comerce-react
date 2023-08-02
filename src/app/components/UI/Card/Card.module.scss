@@ -2,18 +2,29 @@
 @import "../../../../mixins.scss";
 
 .darkMode{
-    background-color: $light-grey;
-    color:$black;
+    @include borderDark;
+    @include shadowDark;
+    background-color: $dark-grey;
+    color:$white;
+    img{
+        @include borderDark;
+        @include shadowDark;
+    }
 }
 .lightMode{
+    @include borderLight;
+    @include shadowLight;
     background-color: $white;
     color:$black;
+    img{
+        @include borderLight;
+        @include shadowLight;
+    }
 }
 .card{
     @include formatCard;
-    
     img{
-        width: 100%;
+        width: 80%;
     }
     h3{
         font-size: $title;

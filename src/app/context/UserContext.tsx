@@ -1,11 +1,12 @@
 import { createContext, useState } from "react";
-import { ChildrenType, UserDataResponse } from "../interfaces/interfaces";
+import { ChildrenType, UserContextType, UserDataResponse } from "../interfaces/interfaces";
 /* import { useAuth } from "../hooks/useAuth";
 import { useQuery } from "react-query";
 import { QUERY_KEY_USER_AUTH } from "../constants/queryConstants";
 import { API_AUTH } from "../constants/urlsAPI"; */
 
-export const UserContext = createContext<any>(null!);
+
+export const UserContext = createContext<UserContextType>(null!);
 
 export function UserProvider({ children }: ChildrenType) {
   const [user, setUser] = useState<UserDataResponse | null>(null);
@@ -24,10 +25,10 @@ export function UserProvider({ children }: ChildrenType) {
     error: userDataError,
   } = useQuery([QUERY_KEY_USER_AUTH, auth.accessToken], fetchUserAuth); */
 
-  const updateUser = (userData:UserDataResponse) => {
+  const updateUser = (userData: UserDataResponse | null) => {
     setUser(userData);
   };
 
-  const value = {user, updateUser};
+  const value = { user, updateUser };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }

@@ -1,11 +1,23 @@
 .darkMode {
-  background-color: #cfcece;
-  color: #141414;
+  border: 1px solid #4c4a4a;
+  box-shadow: 0px 0px 8px #4c4a4a;
+  background-color: #292929;
+  color: #ece7e7;
+}
+.darkMode img {
+  border: 1px solid #4c4a4a;
+  box-shadow: 0px 0px 8px #4c4a4a;
 }
 
 .lightMode {
+  border: 1px solid #cfcece;
+  box-shadow: 0px 0px 8px #cfcece;
   background-color: #ece7e7;
   color: #141414;
+}
+.lightMode img {
+  border: 1px solid #cfcece;
+  box-shadow: 0px 0px 8px #cfcece;
 }
 
 .card {
@@ -14,7 +26,7 @@
   width: 320px;
 }
 .card img {
-  width: 100%;
+  width: 80%;
 }
 .card h3 {
   font-size: 24px;
