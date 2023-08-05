@@ -107,4 +107,6 @@ export interface CartContextType {
   substractItem: (id: number) => void;
   removeItem: (id: number) => void;
   total: number;
+  countItems: number;
+  resetCart: ()=>void;
 }

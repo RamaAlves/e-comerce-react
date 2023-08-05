@@ -1,12 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CardProductCart } from "../../components/UI/CardProductCart/CardProductCart";
 import { useCart } from "../../hooks/useCart";
 import { useTheme } from "../../hooks/useTheme";
 import styles from "./Cart.module.scss";
 
 export function Cart() {
-  const { items, addItem, substractItem, removeItem, total } = useCart();
+  const { items, addItem, substractItem, removeItem, total, countItems, resetCart } = useCart();
   const { darkMode } = useTheme();
+  const navigate = useNavigate();
+  
+  function pay() {
+    resetCart()
+    navigate('/buy-success', {replace:true})
+  }
 
   return (
     <main
@@ -16,7 +22,9 @@ export function Cart() {
       ].join(" ")}
     >
       <h1>cart</h1>
-      <p>Total: ${total}</p>
+      <p>Items total: {countItems}</p>
+      <p>Total Price: ${total}</p>
+      <button onClick={resetCart}>clean cart</button>
       <section className={styles.containerProducts}>
         {items.length > 0 ? (
           items.map((product: any) => {
@@ -36,7 +44,9 @@ export function Cart() {
           </>
         )}
       </section>
-      <div></div>
+      <div>
+        <button onClick={pay}>Pay</button>
+      </div>
     </main>
   );
 }

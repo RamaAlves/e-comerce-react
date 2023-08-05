@@ -23,6 +23,7 @@ import { RequireAdmin } from "./components/RequireAdmin/RequireAdmin";
 import { CreateCategory } from "./screens/Categories/CreateCategory/CreateCategory";
 import { EditCategory } from "./screens/Categories/EditCategory/EditCategory";
 import { CartProvider } from "./context/CartContext";
+import { BuySuccess } from "./screens/BuySuccess/BuySuccess";
 
 const queryClient = new QueryClient();
 
@@ -77,6 +78,14 @@ function App() {
                       element={
                         <RequireAuth>
                           <Cart />
+                        </RequireAuth>
+                      }
+                    />
+                    <Route
+                      path="/buy-success"
+                      element={
+                        <RequireAuth>
+                          <BuySuccess />
                         </RequireAuth>
                       }
                     />

@@ -14,6 +14,8 @@ export function CartProvider({ children }: ChildrenType) {
   //states
   //Items cart state
   const [items, setItems] = useState<CartProductSchema[]>([]);
+  //Total items state
+  const [countItems, setCountItems] = useState<number>(0);
   //Total price state
   const [total, setTotal] = useState<number>(0);
 
@@ -51,7 +53,7 @@ export function CartProvider({ children }: ChildrenType) {
     }
     //save cart in local storage
     localStorage.setItem(CART_ITEMS + user?.name, JSON.stringify(updateItems));
-    //set total price of update items
+    //set total price and total items of update items
     updateTotal(updateItems);
     //set items in the cart
     setItems(updateItems);
@@ -86,7 +88,7 @@ export function CartProvider({ children }: ChildrenType) {
         CART_ITEMS + user?.name,
         JSON.stringify(updateItems)
       );
-      //set total price of update items
+      //set total price and total items of update items
       updateTotal(updateItems);
       //set items in the cart
       setItems(updateItems);
@@ -103,7 +105,18 @@ export function CartProvider({ children }: ChildrenType) {
     updateItems.splice(index, 1);
     //save cart in local storage
     localStorage.setItem(CART_ITEMS + user?.name, JSON.stringify(updateItems));
-    //set total price of update items
+    //set total price and total items of update items
+    updateTotal(updateItems);
+    //set items in the cart
+    setItems(updateItems);
+  }
+  
+  //clean cart
+  function resetCart() {
+    const updateItems: [] = [];
+    //save cart in local storage
+    localStorage.setItem(CART_ITEMS + user?.name, JSON.stringify(updateItems));
+    //set total price and total items of update items
     updateTotal(updateItems);
     //set items in the cart
     setItems(updateItems);
@@ -111,17 +124,21 @@ export function CartProvider({ children }: ChildrenType) {
 
   //Return total price of items in the cart
   function updateTotal(listaItems: CartProductSchema[]) {
-    //temp variable
+    //temp variables
+    let count: number = 0;
     let partial: number = 0;
     //sum of the value of all items
     listaItems.forEach((item) => {
+      count += item.quantity;
       partial += item.price * item.quantity;
     });
+    //set counItems
+    setCountItems(count);
     //set total
     setTotal(partial);
   }
 
-  const value = { items, addItem, substractItem, removeItem, total };
+  const value = { items, addItem, substractItem, removeItem, total, countItems, resetCart };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

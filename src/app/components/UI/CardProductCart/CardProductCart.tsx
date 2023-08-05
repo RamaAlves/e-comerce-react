@@ -19,7 +19,8 @@ export function CardProductCart({
         <p className={styles.title}>{product.title}</p>
         <p className={styles.description}>{product.description}</p>
         <div className={styles.price}>
-          <p>${product.price}</p>
+          <p className={styles.unitPrice}>Price: ${product.price}</p>
+          <p className={styles.subtotal}>Subtotal: ${product.price*product.quantity}</p>
           <div className={styles.quantity}>
             <button
               onClick={() => {
