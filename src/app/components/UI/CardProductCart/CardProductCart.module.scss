@@ -83,12 +83,7 @@
     } */
 }
 .container{
-    @include formatCard;
-    height: 120px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: $padding;
+    @include cardMobile;
     img{
         height: 80%;
         align-self: center;

@@ -48,7 +48,7 @@ export function Categories() {
           {user?.role === "admin" && (
             <section className={styles.containerAdminOptions}>
               <Link className={styles.buttonCreate} to="/categories/create">
-                Create Category
+                Create
               </Link>
             </section>
           )}

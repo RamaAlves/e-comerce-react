@@ -3,15 +3,25 @@ import { CardProductCart } from "../../components/UI/CardProductCart/CardProduct
 import { useCart } from "../../hooks/useCart";
 import { useTheme } from "../../hooks/useTheme";
 import styles from "./Cart.module.scss";
+import { Button } from "../../components/UI/Button/Button";
+import { ContainerButtons } from "../../components/UI/ContainerButtons/ContainerButtons";
 
 export function Cart() {
-  const { items, addItem, substractItem, removeItem, total, countItems, resetCart } = useCart();
+  const {
+    items,
+    addItem,
+    substractItem,
+    removeItem,
+    total,
+    countItems,
+    resetCart,
+  } = useCart();
   const { darkMode } = useTheme();
   const navigate = useNavigate();
-  
+
   function pay() {
-    resetCart()
-    navigate('/buy-success', {replace:true})
+    resetCart();
+    navigate("/buy-success", { replace: true });
   }
 
   return (
@@ -22,9 +32,15 @@ export function Cart() {
       ].join(" ")}
     >
       <h1>cart</h1>
-      <p>Items total: {countItems}</p>
-      <p>Total Price: ${total}</p>
-      <button onClick={resetCart}>clean cart</button>
+      <section className={styles.cartInfo}>
+        <article>
+          <p>Items total:</p> <p className={styles.info}>{countItems}</p>
+        </article>
+        <article>
+          <p>Total Price:</p>
+          <p className={styles.info}>${total}</p>
+        </article>
+      </section>
       <section className={styles.containerProducts}>
         {items.length > 0 ? (
           items.map((product: any) => {
@@ -44,9 +60,16 @@ export function Cart() {
           </>
         )}
       </section>
-      <div>
-        <button onClick={pay}>Pay</button>
-      </div>
+      {countItems > 0 && (
+        <ContainerButtons column={false}>
+          <Button purple={true} func={resetCart}>
+            Clean
+          </Button>
+          <Button purple={true} func={pay}>
+            Pay
+          </Button>
+        </ContainerButtons>
+      )}
     </main>
   );
 }

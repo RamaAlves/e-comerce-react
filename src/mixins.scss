@@ -9,17 +9,41 @@
     padding-bottom: $padding;
     width: 320px;
 }
+@mixin cardMobile{
+    @include formatCard;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $padding;
+}
+@mixin cardDesktop{
+    @include formatCard;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: $padding;
+}
 @mixin formatButton{
     border: 1px solid $purple;
     font-size: $text;
     background-color: $white;
     color:$purple;
     padding: $padding;
+    width: 80px;
+    line-height: 1;
+    height: 40px;
+    @include borderRadius;
+    cursor:pointer;
+    text-decoration: none;
+}
+@mixin formatButtonDesktop{
+    @include formatButton;
     min-width: 120px;
     max-width: 320px;
     height: 46px;
-    @include borderRadius;
-    cursor:pointer;
 }
 @mixin buttonDisable{
     background-color: $grey;
@@ -29,6 +53,17 @@
     @include formatButton;
     background-color: $purple;
     color: $light-purple;
+}
+@mixin formatButtonPurpleDesktop{
+    @include formatButtonDesktop;
+    background-color: $purple;
+    color: $light-purple;
+}
+@mixin formatContainerButtons{
+    display: flex;
+    min-width: 90px;
+    max-width: 340px;
+    gap: $gap;
 }
 @mixin borderLight{
     border: 1px solid $light-grey;

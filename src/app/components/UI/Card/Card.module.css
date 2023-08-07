@@ -1,12 +1,12 @@
 .darkMode {
   border: 1px solid #4c4a4a;
-  box-shadow: 0px 0px 8px #4c4a4a;
+  box-shadow: 0px 0px 6px #4c4a4a;
   background-color: #292929;
   color: #ece7e7;
 }
 .darkMode img {
   border: 1px solid #4c4a4a;
-  box-shadow: 0px 0px 8px #4c4a4a;
+  box-shadow: 0px 0px 6px #4c4a4a;
 }
 
 .lightMode {
@@ -21,15 +21,23 @@
 }
 
 .card {
+  text-decoration: none;
   padding-top: 12px;
   padding-bottom: 12px;
   width: 320px;
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
 }
 .card img {
-  width: 80%;
+  height: 80%;
+  aspect-ratio: 1;
 }
 .card h3 {
-  font-size: 24px;
+  padding: 0;
+  text-decoration: none;
 }
 .card p {
   font-size: 16px;

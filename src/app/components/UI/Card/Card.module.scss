@@ -22,12 +22,15 @@
     }
 }
 .card{
-    @include formatCard;
+    text-decoration: none;
+    @include cardMobile;
     img{
-        width: 80%;
+        height: 80%;
+        aspect-ratio: 1;
     }
     h3{
-        font-size: $title;
+        padding: 0;
+        text-decoration: none;
     }
     p{
         font-size: $text;

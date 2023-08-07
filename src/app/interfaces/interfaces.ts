@@ -46,7 +46,7 @@ export interface CartProductSchema {
   quantity: number;
 }
 export interface CardProductCartProps {
-  product: any;
+  product: CartProductSchema;
   onSubstract: Function;
   onAdd: Function;
   onRemove: Function;
@@ -58,6 +58,11 @@ export interface ChildrenType {
 export interface ButtonType {
   children: React.ReactNode;
   purple: boolean;
+  func?: (() => void) | ((e: React.MouseEvent<HTMLElement>) => void);
+}
+export interface ContainerButtonProps {
+  children: React.ReactNode;
+  column: boolean;
 }
 
 export interface UserLoginData {

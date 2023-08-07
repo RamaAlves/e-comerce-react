@@ -13,12 +13,17 @@ import { Button } from "../../../components/UI/Button/Button";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { ModalDelete } from "../../../components/Modal/ModalDelete/ModalDelete";
+import { useCart } from "../../../hooks/useCart";
+import { NotificationAddItem } from "../../../components/Modal/Notification/NotificationAddItem/NotificationAddItem";
 
 export function ProductDetails() {
   const {darkMode} = useTheme();
   const { id } = useParams();
   const { user } = useUser();
+  const { addItem } = useCart();
   const navigate = useNavigate();
+  //states
+  const [showNotification, setShowNotification] = useState<boolean>(false);
   const [showModalDelete, setShowModalDelete] = useState<boolean>(false);
 
   const MODAL_MESSAGE = "Are youy sure delete this product?";
@@ -69,7 +74,7 @@ export function ProductDetails() {
         darkMode ? styles.darkMode : styles.lightMode,
       ].join(" ")}
     >
-      <section className={styles.containerProducts}>
+      <section className={styles.containerProduct}>
         {productError ? (
           <ErrorComponent />
         ) : (
@@ -79,33 +84,59 @@ export function ProductDetails() {
               <>
                 <h1>{product.title}</h1>
                 {user?.role === "admin" && (
-                  <ContainerButtons>
+                  <ContainerButtons column={false}>
                     <Link to={`/products/edit/${id}`}>
                       <Button purple={false}>Edit</Button>
                     </Link>
-                    <a
-                      className={styles.delete}
-                      onClick={() => {
+                    <Button
+                      purple={true}
+                      func={() => {
                         setShowModalDelete(true);
                       }}
                     >
                       Delete
-                    </a>
+                    </Button>
                   </ContainerButtons>
                 )}
                 <Carrousel images={product.images} />
                 <h3>Category: {product.category.name}</h3>
                 <p>{product.description}</p>
                 <h4>Price: ${product.price}</h4>
+                {user && (
+                  <ContainerButtons column={true}>
+                    <Button
+                      purple={true}
+                      func={() => {
+                        addItem(product);
+                        setShowNotification(true);
+                      }}
+                    >
+                      🛒
+                    </Button>
+                  </ContainerButtons>
+                )}
                 {showModalDelete &&
                   createPortal(
                     <ModalDelete
                       content={MODAL_MESSAGE}
                       onConfirm={handleConfirmDelete}
-                      onCancel={() => { setShowModalDelete(false) }}
+                      onCancel={() => {
+                        setShowModalDelete(false);
+                      }}
                     />,
                     document.getElementById("portal") as HTMLElement,
                     "modal-delete"
+                  )}
+                {showNotification &&
+                  createPortal(
+                    <NotificationAddItem
+                      product={product}
+                      onRemove={(): void => {
+                        setShowNotification(false);
+                      }}
+                    />,
+                    document.getElementById("portal") as HTMLElement,
+                    "notification-add-item"
                   )}
               </>
             )}

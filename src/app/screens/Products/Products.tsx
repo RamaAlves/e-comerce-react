@@ -5,7 +5,7 @@ import {
 } from "../../constants/queryConstants";
 import { API_CATEGORIES, API_PRODUCTS } from "../../constants/urlsAPI";
 import { Link, useLocation } from "react-router-dom";
-import { useState} from "react";
+import { useState } from "react";
 import { CategorySchema, ProductSchema } from "../../interfaces/interfaces";
 import styles from "./Products.module.scss";
 import { Loader } from "../../components/UI/Loader/Loader";
@@ -13,11 +13,16 @@ import { ErrorComponent } from "../../components/Error/ErrorComponent";
 import { useTheme } from "../../hooks/useTheme";
 import { ProductCard } from "../../components/UI/ProductCard/ProductCard";
 import { useUser } from "../../hooks/useUser";
+import { Button } from "../../components/UI/Button/Button";
 
 export function Products() {
-  const {darkMode} = useTheme();
+  const { darkMode } = useTheme();
   const { state } = useLocation();
   const { user } = useUser();
+
+  //states
+  const [expandedFilter, setExpandedFilter] = useState(false);
+
   const [urlQuery, setUrlQuery] = useState(
     state?.categoryId
       ? API_PRODUCTS + `/?categoryId=${state?.categoryId}`
@@ -55,6 +60,7 @@ export function Products() {
   });
   function handleFilter(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setExpandedFilter(false);
     // query contains API url
     let query = API_PRODUCTS;
     let FilterData = new FormData(e.currentTarget);
@@ -82,6 +88,9 @@ export function Products() {
     }
     setUrlQuery(query);
   }
+  function cleanFilter() {
+    setUrlQuery(API_PRODUCTS)
+  }
 
   return (
     <main
@@ -90,7 +99,23 @@ export function Products() {
         darkMode ? styles.darkMode : styles.lightMode,
       ].join(" ")}
     >
-      <section className={styles.containerFilter}>
+      <section
+        className={[
+          styles.containerFilter,(expandedFilter
+            ? styles.containerFilterExpanded
+            : styles.containerFilterCondense)
+          ].join(" ")
+        }
+      >
+        <Button
+          purple={true}
+          func={() => {
+            setExpandedFilter(true);
+          }}
+          >
+          Filter
+        </Button>
+          {urlQuery!= API_PRODUCTS&& <Button purple={true} func={cleanFilter}>Clean</Button>}
         <form className={styles.formFilter} onSubmit={handleFilter}>
           <>
             {categoriesError}
@@ -113,15 +138,15 @@ export function Products() {
             <input type="number" id="min" name="minPrice" />
             <label htmlFor="max">Max price: </label>
             <input type="number" id="max" name="maxPrice" />
-            <button type="submit">Apply</button>
+            <Button purple={true}>Apply</Button>
           </>
         </form>
       </section>
       <section className={styles.containerProducts}>
         {productsError ? (
           <ErrorComponent />
-          ) : (
-            <>
+        ) : (
+          <>
             {productsStatus === "loading" && <Loader />}
             {products &&
               products.map((product: ProductSchema) => {
@@ -132,7 +157,9 @@ export function Products() {
       </section>
       {user?.role === "admin" && (
         <section className={styles.containerAdminOptions}>
-          <Link className={styles.buttonCreate} to="/products/create">Create Product</Link>
+          <Link className={styles.buttonCreate} to="/products/create">
+            Create Product
+          </Link>
         </section>
       )}
     </main>

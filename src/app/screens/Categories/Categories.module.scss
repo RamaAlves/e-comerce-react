@@ -36,10 +36,7 @@
         font-size: $title;
     }
     .containerAdminOptions{
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include formatCard;
         .buttonCreate{
             @include formatButtonPurple;
             text-decoration: none;

@@ -1,6 +1,25 @@
 @import '../../../variables.scss';
+@import '../../../mixins.scss';
 
+.darkMode{
+    @include borderDark; 
+    @include shadowDark;
+    .containerImageSelect{
+        @include borderDark; 
+        @include shadowDark;
+    }
+}
+.lightMode{
+    @include borderLight; 
+    @include shadowLight;
+    .containerImageSelect{
+        @include borderLight; 
+        @include shadowLight;
+    }
+}
+ 
 .carrousel{
+    margin-top:$gap;
     .containerImageSelect{
         width: 100%;
         display: grid;
@@ -13,6 +32,7 @@
         }
     }
     .containerImages{
+        padding: $padding;
         display: flex;
         width: 100%;
         justify-content: space-around;

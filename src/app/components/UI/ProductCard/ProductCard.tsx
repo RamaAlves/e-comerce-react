@@ -8,20 +8,20 @@ import { Button } from "../Button/Button";
 import { useCart } from "../../../hooks/useCart";
 import { createPortal } from "react-dom";
 import { NotificationAddItem } from "../../Modal/Notification/NotificationAddItem/NotificationAddItem";
+import { useUser } from "../../../hooks/useUser";
 
 type Product = {
   product: ProductSchema;
 };
 
 export function ProductCard({ product }: Product) {
-  const [showNotification, setShowNotification] = useState<boolean>(false);
   const { addItem } = useCart();
-
+  const { user } = useUser();
+  //states
+  const [showNotification, setShowNotification] = useState<boolean>(false);
 
   return (
     <Card>
-      <h3>{product.title}</h3>
-      <p>{product.category.name}</p>
       <Suspense fallback={<Loader />}>
         <img
           src={product.images[0]}
@@ -32,21 +32,31 @@ export function ProductCard({ product }: Product) {
           }
         />
       </Suspense>
-      <ContainerButtons>
+      <div>
+        <h3>{product.title}</h3>
+        <p>{product.category.name}</p>
+      </div>
+      <ContainerButtons column={true}>
         <Link to={`/products/${product.id}`}>
           <Button purple={false}>Details</Button>
         </Link>
 
-        <button onClick={() => {
-          addItem(product)
-          setShowNotification(true)
-        }} /* purple={true} */>🛒</button>
+        {user &&
+          <Button
+            purple={true}
+            func={() => {
+              addItem(product);
+              setShowNotification(true);
+            }}
+          >
+            🛒
+          </Button>}
       </ContainerButtons>
       {showNotification &&
         createPortal(
           <NotificationAddItem
             product={product}
-            onRemove={():void => {
+            onRemove={(): void => {
               setShowNotification(false);
             }}
           />,

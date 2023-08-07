@@ -13,20 +13,45 @@
 }
 
 .container {
+  position: absolute;
+  top: 80px;
   width: 100vw;
-  min-height: 100vh;
-  padding-top: 2rem;
   display: flex;
-  justify-content: end;
-  align-items: flex-start;
+  justify-content: flex-end;
+  align-items: end;
+  pointer-events: painted;
+  overflow: hidden;
 }
 .container .notification {
   padding-top: 12px;
   padding-bottom: 12px;
   width: 320px;
-  width: 50%;
-  height: 80px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: 0.5s ease-in 0s 1 show, 0.5s ease-out 1.5s 1 hide;
+}
+.container .notification p {
+  text-align: center;
+  font-size: 16px;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
 }/*# sourceMappingURL=NotificationAddItem.module.css.map */
