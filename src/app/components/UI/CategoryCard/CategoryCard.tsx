@@ -49,25 +49,25 @@ export function CategoryCard({ category }: Category) {
   }
 
   return (
-    <Link to={`/products`} state={{ categoryId: category.id }}>
+    <Link className={styles.link} to={`/products`} state={{ categoryId: category.id }}>
       <Card>
-        <h1>{category.name}</h1>
         <img src={category.image} alt={`imagen de ${category.name}`} />
+        <h3>{category.name}</h3>
         {user?.role === "admin" && (
           <>
-            <ContainerButtons>
+            <ContainerButtons column={true}>
               <Link to={`/categories/edit/${category.id}`}>
-                <Button purple={false}>Edit category 🖋</Button>
+                <Button purple={false}>Edit 🖋</Button>
               </Link>
-              <a
-                className={styles.delete}
-                onClick={(e) => {
+              <Button
+                purple={true}
+                func={(e: React.MouseEvent<HTMLElement>):void => {
                   e.preventDefault();
                   setShowModalDelete(true);
                 }}
               >
                 Delete
-              </a>
+              </Button>
             </ContainerButtons>
           </>
         )}
@@ -77,7 +77,7 @@ export function CategoryCard({ category }: Category) {
           <ModalDelete
             content={MODAL_MESSAGE}
             onConfirm={handleConfirmDelete}
-            onCancel={(e: React.MouseEvent<HTMLElement>):void => {
+            onCancel={(e: React.MouseEvent<HTMLElement>): void => {
               e.preventDefault();
               setShowModalDelete(false);
             }}

@@ -18,8 +18,11 @@
             color: $light-grey;
         }
         .price {
-            p {
-                color:$white;
+            .unitPrice {
+                color: $white;
+            }
+            .subtotal {
+                color: $white;
             }
             .quantity {
                 button {
@@ -36,8 +39,8 @@
             }
         }
     }
-    button {
-    }
+    /* button {
+    } */
 }
 .lightMode{
     @include borderLight;
@@ -55,7 +58,11 @@
             color: $black;
         }
         .price {
-            p {
+            .unitPrice{
+                color: $black;
+            }
+            .subtotal{
+                color: $black;
             }
             .quantity {
                 button {
@@ -72,16 +79,11 @@
             }
         }
     }
-    button {
-    }
+    /* button {
+    } */
 }
 .container{
-    @include formatCard;
-    height: 120px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: $padding;
+    @include cardMobile;
     img{
         height: 80%;
         align-self: center;
@@ -96,6 +98,7 @@
         align-items: center;
         .title{
             align-self: flex-start ;
+            padding: 0;
         }
         .description{
             display: none;
@@ -108,6 +111,13 @@
             p{
                 max-width: 80px;
                 overflow: auto;
+                padding: 0;
+            }
+            .unitPrice {
+                display: none;
+            }
+            .subtotal {
+                display: inline-block;
             }
             .quantity{
                 display:flex;
@@ -131,7 +141,7 @@
                     max-width: 30px;
                     text-align: center;
                     height: 100%;
-                    line-height: 1.8;
+                    line-height: 1.7;
                 }
             }
         }

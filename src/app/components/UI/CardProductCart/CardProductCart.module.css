@@ -2,6 +2,8 @@
   border: 1px solid #4c4a4a;
   box-shadow: 0px 0px 6px #4c4a4a;
   background-color: #292929;
+  /* button {
+  } */
 }
 .darkMode img {
   border: 1px solid #4c4a4a;
@@ -12,7 +14,10 @@
 .darkMode .containerInfo .description {
   color: #cfcece;
 }
-.darkMode .containerInfo .price p {
+.darkMode .containerInfo .price .unitPrice {
+  color: #ece7e7;
+}
+.darkMode .containerInfo .price .subtotal {
   color: #ece7e7;
 }
 .darkMode .containerInfo .price .quantity button {
@@ -26,10 +31,13 @@
 .darkMode .containerInfo .price .quantity p {
   border: 1px solid #e9d4ff;
 }
+
 .lightMode {
   border: 1px solid #cfcece;
   box-shadow: 0px 0px 8px #cfcece;
   background-color: #ece7e7;
+  /* button {
+  } */
 }
 .lightMode img {
   border: 1px solid #cfcece;
@@ -38,6 +46,12 @@
   color: #141414;
 }
 .lightMode .containerInfo .description {
+  color: #141414;
+}
+.lightMode .containerInfo .price .unitPrice {
+  color: #141414;
+}
+.lightMode .containerInfo .price .subtotal {
   color: #141414;
 }
 .lightMode .containerInfo .price .quantity button {
@@ -51,10 +65,8 @@
 .lightMode .containerInfo .price .quantity p {
   border: 1px solid #4b0d89;
 }
+
 .container {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  width: 320px;
   height: 120px;
   display: flex;
   justify-content: space-between;
@@ -76,6 +88,7 @@
 }
 .container .containerInfo .title {
   align-self: flex-start;
+  padding: 0;
 }
 .container .containerInfo .description {
   display: none;
@@ -89,6 +102,13 @@
 .container .containerInfo .price p {
   max-width: 80px;
   overflow: auto;
+  padding: 0;
+}
+.container .containerInfo .price .unitPrice {
+  display: none;
+}
+.container .containerInfo .price .subtotal {
+  display: inline-block;
 }
 .container .containerInfo .price .quantity {
   display: flex;
@@ -113,7 +133,7 @@
   max-width: 30px;
   text-align: center;
   height: 100%;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 .container button {
   cursor: pointer;

@@ -2,18 +2,22 @@
 @import "../../../mixins.scss";
 .darkMode{
     background-color: $dark-grey;
-    .containerFilter {
-        background-color: $light-grey;
+    .containerFilter, .containerFilterExpanded {
+        background-color: $dark-grey;
+        @include borderDark;
+        @include shadowDark;
     }
-
+    
     /* .containerProducts {
-       background-color: $grey;
+        background-color: $grey;
     } */
 }
 .lightMode{
     background-color: $white;
-    .containerFilter {    
-        background-color: $light-grey;
+    .containerFilter, .containerFilterExpanded {    
+        background-color: $white;
+        @include borderLight;
+        @include shadowLight;
     }
     
     /* .containerProducts {
@@ -37,7 +41,44 @@
         }
     }
     .containerFilter{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 320px;
+        transition: height .6s ease;
+    }
+    .containerFilterCondense{
+        flex-direction: row;
+        justify-content: space-around;
         height: 10%;
+        button{
+            display: inline-block;
+            opacity: 1;
+        }
+        .formFilter{
+            display: none;
+            opacity: 0;   
+        }
+    }
+    .containerFilterExpanded{
+        height: 80%;
+        button{
+            opacity: 0;   
+            display: none;
+        }
+        .formFilter{
+            opacity: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: $gap;
+            button{
+                display: inline-block;   
+                opacity: 1;
+            }
+        }
     }
     .containerProducts{
         height: 80%;

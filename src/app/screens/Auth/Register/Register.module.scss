@@ -5,16 +5,22 @@
     background-color: $dark-grey;
     
     .form {
-        background-color: $light-grey;
-
+        background-color: $dark-grey;
+        @include borderDark;
+        @include shadowDark;
         label {
+            color: $white;
+            
             input {
+                color: $white;
                 background-color: $dark-grey;
+                @include borderDark;
+                @include shadowDark;
             }
         }
 
         a {
-            color: $purple;
+            color: $light-purple;
         }
     }
 }
@@ -23,11 +29,18 @@
     background-color: $white;
     
     .form {
-        background-color: $light-grey;
+        @include borderLight;
+        @include shadowLight;
+        background-color: $white;
 
         label {
+            color: $black;
+
             input {
-                background-color: $grey;
+                @include borderLight;
+                @include shadowLight;
+                color: $black;
+                background-color: $light-grey;
             }
         }
 
@@ -57,11 +70,11 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             width: 100%;
 
             input {
-                width: 100%;
+                width: 80%;
                 padding: $padding;
                 border: none;
             }
@@ -74,7 +87,7 @@
 
         .btnRegister {
             @include formatButtonPurple;
-            font-size: $button-login;
+            font-size: $text;
             &:disabled{
                 @include buttonDisable;
             }

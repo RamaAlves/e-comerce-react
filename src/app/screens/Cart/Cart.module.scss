@@ -33,12 +33,22 @@
     h1{
         font-size: $title;
     }
-    p{
-        align-self: flex-end;
+    .cartInfo{
         padding: $padding;
         font-size: $text;
+        width: 320px;
+        display: flex;
+        justify-content: space-around;
+        article{
+            .info{
+                display: inline-block;
+                width: 100px;
+                overflow: auto;
+            }
+        }
     }
     .containerProducts{
+        padding: $padding 0 ;
         max-height: 100%;
         width: 100%;
         display: flex;
