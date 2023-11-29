@@ -1,7 +1,7 @@
 /* import { Navigate, useLocation, useNavigate } from "react-router-dom";
  *//* import { useAuth } from "../../hooks/useAuth"; */
 import { Outlet } from "react-router-dom";
-import { ChildrenType } from "../../interfaces/interfaces";
+/* import { ChildrenType } from "../../interfaces/interfaces"; */
 /* import { useUser } from "../../hooks/useUser";
 import { useEffect } from "react"; */
 
