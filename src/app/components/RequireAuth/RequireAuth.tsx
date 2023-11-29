@@ -1,9 +1,9 @@
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 /* import { useAuth } from "../../hooks/useAuth"; */
-import { ChildrenType } from "../../interfaces/interfaces";
+/* import { ChildrenType } from "../../interfaces/interfaces"; */
 import { useUser } from "../../hooks/useUser";
 
-export function RequireAuth({ children }:ChildrenType) {
+export function RequireAuth(/* { children }:ChildrenType */) {
   const {user} = useUser();
   const location = useLocation();
 
@@ -15,5 +15,5 @@ export function RequireAuth({ children }:ChildrenType) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  return children;
+  return <Outlet/>;
 }
