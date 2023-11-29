@@ -31,5 +31,9 @@
     "tslint-config-prettier": "1.18.0",
     "typescript": "5.0.2",
     "vite": "4.3.9"
+  },
+  "resolutions": {
+    "@types/react": "17.0.14",
+    "@types/react-dom": "17.0.14"
   }
 }
