@@ -1,15 +1,15 @@
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
-/* import { useAuth } from "../../hooks/useAuth"; */
+/* import { Navigate, useLocation, useNavigate } from "react-router-dom";
+ *//* import { useAuth } from "../../hooks/useAuth"; */
 import { ChildrenType } from "../../interfaces/interfaces";
-import { useUser } from "../../hooks/useUser";
-import { useEffect } from "react";
+/* import { useUser } from "../../hooks/useUser";
+import { useEffect } from "react"; */
 
 export function RequireAdmin({ children }: ChildrenType) {
-  const { user } = useUser();
+  /* const { user } = useUser();
   const location = useLocation();
-  const navigator =useNavigate() 
+  const navigator =useNavigate()  */
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (user?.role != "admin") {
       // Redirect them to the /login page, but save the current location they were
       // trying to go to when they were redirected. This allows us to send them
@@ -17,7 +17,7 @@ export function RequireAdmin({ children }: ChildrenType) {
       // than dropping them off on the home page.
       navigator("/login", {state:{ from: location }, replace:true});
     }
-  },[user]);
+  },[user]); */
   /* if (user?.role != "admin") {
     // Redirect them to the /login page, but save the current location they were
     // trying to go to when they were redirected. This allows us to send them
