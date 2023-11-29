@@ -42,15 +42,17 @@ function App() {
                     <Route
                       path="/categories/edit/:id"
                       element={
+                        <RequireAdmin>
                           <EditCategory />
-                        
+                        </RequireAdmin>
                       }
                     />
                     <Route
                       path="/categories/create"
                       element={
+                        <RequireAdmin>
                           <CreateCategory />
-                        
+                        </RequireAdmin>
                       }
                     />
                     <Route path="/products" element={<Products />} />
@@ -58,49 +60,49 @@ function App() {
                     <Route
                       path="/products/create"
                       element={
-                        
+                        <RequireAdmin>
                           <CreateProduct />
-                        
+                        </RequireAdmin>
                       }
                     />
                     <Route
                       path="/products/edit/:id"
                       element={
-                        
+                        <RequireAdmin>
                           <EditProduct />
-                        
+                        </RequireAdmin>
                       }
                     />
                     <Route
                       path="/cart-detail"
                       element={
-                        
+                        <RequireAuth>
                           <Cart />
-                        
+                        </RequireAuth>
                       }
                     />
                     <Route
                       path="/buy-success"
                       element={
-                        
+                        <RequireAuth>
                           <BuySuccess />
-                        
+                        </RequireAuth>
                       }
                     />
                     <Route
                       path="/login"
                       element={
-                        
+                        <RedirectAuth>
                           <Login />
-                        
+                        </RedirectAuth>
                       }
                     />
                     <Route
                       path="/register"
                       element={
-                        
+                        <RedirectAuth>
                           <Register />
-                        
+                        </RedirectAuth>
                       }
                     />
                     <Route path="/error/login" element={<ErrorLogin />} />
