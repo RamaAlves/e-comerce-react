@@ -1,9 +1,9 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 /* import { useAuth } from "../../hooks/useAuth"; */
-import { ChildrenType } from "../../interfaces/interfaces";
+/* import { ChildrenType } from "../../interfaces/interfaces"; */
 import { useUser } from "../../hooks/useUser";
 
-export function RedirectAuth({ children }: ChildrenType) {
+export function RedirectAuth(/* { children }: ChildrenType */) {
   const {user} = useUser();
 
   if (user) {
@@ -14,5 +14,5 @@ export function RedirectAuth({ children }: ChildrenType) {
     return <Navigate to="/" replace />;
   }
 
-  return children;
+  return <Outlet/>;
 }

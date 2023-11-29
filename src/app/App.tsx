@@ -69,22 +69,10 @@ function App() {
                       <Route path="/cart-detail" element={<Cart />} />
                       <Route path="/buy-success" element={<BuySuccess />} />
                     </Route>
-                    <Route
-                      path="/login"
-                      element={
-                        <RedirectAuth>
-                          <Login />
-                        </RedirectAuth>
-                      }
-                    />
-                    <Route
-                      path="/register"
-                      element={
-                        <RedirectAuth>
-                          <Register />
-                        </RedirectAuth>
-                      }
-                    />
+                    <Route element={<RedirectAuth />}>
+                      <Route path="/login" element={<Login />}/>
+                      <Route path="/register" element={<Register />} />
+                    </Route>
                     {/* <Route
                       path="/categories/edit/:id"
                       element={
