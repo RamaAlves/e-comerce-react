@@ -39,15 +39,23 @@ function App() {
                   <Route element={<Layout />}>
                     <Route path="/" element={<Home />} />
                     <Route path="/categories" element={<Categories />} />
-                    <Route
+                    <Route element={<RequireAdmin />}>
+                      <Route
+                        path="/categories/edit/:id"
+                        element={
+                            <EditCategory />
+                        }
+                      />
+                    </Route>
+                    {/* <Route
                       path="/categories/edit/:id"
                       element={
                         <RequireAdmin>
                           <EditCategory />
                         </RequireAdmin>
                       }
-                    />
-                    <Route
+                    /> */}
+                    {/* <Route
                       path="/categories/create"
                       element={
                         <RequireAdmin>
@@ -104,7 +112,7 @@ function App() {
                           <Register />
                         </RedirectAuth>
                       }
-                    />
+                    /> */}
                     <Route path="/error/login" element={<ErrorLogin />} />
                     <Route
                       path="/register/success"

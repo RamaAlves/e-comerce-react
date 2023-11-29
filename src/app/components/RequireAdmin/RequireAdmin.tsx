@@ -1,10 +1,11 @@
 /* import { Navigate, useLocation, useNavigate } from "react-router-dom";
  *//* import { useAuth } from "../../hooks/useAuth"; */
+import { Outlet } from "react-router-dom";
 import { ChildrenType } from "../../interfaces/interfaces";
 /* import { useUser } from "../../hooks/useUser";
 import { useEffect } from "react"; */
 
-export function RequireAdmin({ children }: ChildrenType) {
+export function RequireAdmin(/* { children }: ChildrenType */) {
   /* const { user } = useUser();
   const location = useLocation();
   const navigator =useNavigate()  */
@@ -25,5 +26,5 @@ export function RequireAdmin({ children }: ChildrenType) {
     // than dropping them off on the home page.
     return <Navigate to="/login" state={{ from: location }} replace />;
   } */
-  return (<div>hola</div>);
+  return <Outlet/>;
 }
