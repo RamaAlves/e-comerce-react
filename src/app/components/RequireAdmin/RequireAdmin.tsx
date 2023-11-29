@@ -14,6 +14,7 @@ export function RequireAdmin({ children }: ChildrenType) {
     // than dropping them off on the home page.
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
-
-  return children;
+  else {
+    return <>{children}</>;  
+  }
 }
