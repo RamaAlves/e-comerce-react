@@ -52,5 +52,10 @@
         padding: $padding;
         gap: $gap;
         overflow: auto;
+        @include md{
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 }

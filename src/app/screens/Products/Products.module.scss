@@ -47,6 +47,9 @@
         align-items: center;
         width: 320px;
         transition: height .6s ease;
+        @include md {
+            width: 80%;
+        }
     }
     .containerFilterCondense{
         flex-direction: row;
@@ -79,6 +82,12 @@
                 opacity: 1;
             }
         }
+        @include md {
+            height: 10%;
+            .formFilter{
+                flex-direction: row;
+            }
+        }
     }
     .containerProducts{
         height: 80%;
@@ -90,5 +99,10 @@
         padding: $padding;
         gap: $gap;
         overflow: auto;
+        @include md {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 }

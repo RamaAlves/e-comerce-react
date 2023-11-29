@@ -30,25 +30,25 @@ export function Nav() {
           <ul className={style.list}>
             <Link
               to="/"
-              onClick={() => {
+              /* onClick={() => {
                 setExpandedMenu(!expandedMenu);
-              }}
+              }} */
             >
               <li>Inicio</li>
             </Link>
             <Link
               to="/categories"
-              onClick={() => {
+              /* onClick={() => {
                 setExpandedMenu(!expandedMenu);
-              }}
+              }} */
             >
               <li>Categorias</li>
             </Link>
             <Link
               to="/products"
-              onClick={() => {
+              /* onClick={() => {
                 setExpandedMenu(!expandedMenu);
-              }}
+              }} */
             >
               <li>Products</li>
             </Link>
@@ -56,9 +56,9 @@ export function Nav() {
           <div className={style.userOption}>
             <Link
               to="/login"
-              onClick={() => {
+              /* onClick={() => {
                 setExpandedMenu(!expandedMenu);
-              }}
+              }} */
             >
               Iniciar sesion
             </Link>
@@ -67,11 +67,12 @@ export function Nav() {
         </Link> */}
             <Link
               to="/cart-detail"
-              onClick={() => {
+              className={style.cart}
+              /* onClick={() => {
                 setExpandedMenu(!expandedMenu);
-              }}
+              }} */
             >
-              Cart
+              🛒
             </Link>
             <ThemeButton />
           </div>
